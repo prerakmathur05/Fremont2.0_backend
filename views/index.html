@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Proximity Institute.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/animation.css"><!--css for caraousel-->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- below two files are for the carousel animation -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script language="JavaScript" type="text/javascript"  src="js/animation.js"></script>
+    
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+
+    <link rel="icon" href="icon.ico" type="image/x-icon">
+    <!-- for animation -->
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="js/Home animation.js"></script>
+    
+    <style>
+  #animation_container, #_preload_div_ {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+  @media only screen and  (max-width:1200px){
+	#animation_container, #_preload_div_ {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+  }     
+  @media only screen and  (max-width:600px){
+	#animation_container, #_preload_div_ {
+	position:absolute;
+	margin:auto;
+	left:0;right:0;
+	top:0;bottom:0;
+  }
+  }     
+
+ </style>
+<script src="https://kit.fontawesome.com/f7b8eff6d1.js" crossorigin="anonymous"></script>
+<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+<script src="js/Home animation.js"></script>
+
+<script>
+ var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var comp=AdobeAn.getComposition("3F7B7FC76D434B7FB64DA32DCD5CCA12");
+	var lib=comp.getLibrary();
+	var loader = new createjs.LoadQueue(false);
+	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
+	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
+	var lib=comp.getLibrary();
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleFileLoad(evt, comp) {
+	var images=comp.getImages();	
+	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
+}
+function handleComplete(evt,comp) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var lib=comp.getLibrary();
+	var ss=comp.getSpriteSheet();
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	var preloaderDiv = document.getElementById("_preload_div_");
+	preloaderDiv.style.display = 'none';
+	canvas.style.display = 'block';
+	exportRoot = new lib.Homeanimation();
+	stage = new lib.Stage(canvas);
+	stage.enableMouseOver();	
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		stage.addChild(exportRoot);
+		createjs.Ticker.framerate = lib.properties.fps;
+		createjs.Ticker.addEventListener("tick", stage);
+	}	    
+	//Code to support hidpi screens and responsive scaling.
+	AdobeAn.makeResponsive(true,'both',true,1,[canvas,preloaderDiv,anim_container,dom_overlay_container]);	
+	AdobeAn.compositionLoaded(lib.properties.id);
+	fnStartAnimation();
+}
+</script>
+</head>
+
+<body id="top" onload="init();">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <!-- <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <img src="images/Logo-black-yellow.png" alt="Homepage">
+            </a>
+        </div> -->
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+                
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
+                    <li><a class="smoothscroll"  href="#contact" title="about">News & Events</a></li>
+                    <li><a class="smoothscroll"  href="#works" title="services">Industry Maps & Data</a></li>
+                    <li><a class="smoothscroll"  href="#services" title="works">Company Assistance</a></li>
+                    <li><a class="smoothscroll"  href="#clients" title="clients" style="line-height:3rem !important; display:block; padding-top:10px;">Manufacturing <br> Location Tool</a></li>
+
+                </ul>
+    
+                <p>We are the Fremont Institute for Manufacturing, and we provide tools and assistance to help companies grow, expand, and scale.</p>
+    
+                <ul class="header-nav__social">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li><a   href="/login" target="_blank">Admin</a></li>
+
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav>  <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ==================================data-natural-width=3000 data-natural-height=2000================ -->
+
+    
+    <section id="home" class="s-home target-section" data-parallax="scroll"  data-natural-width=3000 data-natural-height=1000 data-position-y=center>
+                     
+    
+        
+        <!-- <div class="overlay"></div> -->
+       
+        <!-- <div class="shadow-overlay"></div> -->
+        <div id="animation_container" style="background-color:rgba(37, 156, 244, 1.00); width:1009px; height:750px">
+            <canvas id="canvas" width="1009" height="750" style="position: absolute; display: none; background-color:rgba(37, 156, 244, 1.00);"></canvas>
+            <div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1009px; height:750px; position: absolute; left: 0px; top: 0px; display: none;">
+            </div>
+        </div>
+        <div id='_preload_div_' style='position:absolute; top:0; left:0; display: inline-block; height:750px; width: 1009px; text-align: center;'>	<span style='display: inline-block; height: 100%; vertical-align: middle;'></span>	<img src=images/_preloader.gif style='vertical-align: middle; max-height: 100%'/></div>
+    
+
+
+
+         <!-- end home-content -->
+ 
+     
+<!-- 
+        <ul class="home-social">
+            <li>
+                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul>  -->
+        <!-- end home-social -->
+
+    
+    
+    </section> 
+   
+    
+    
+  
+      
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact">
+
+        <div class="overlay"></div>
+        <div class="contact__line"></div>
+        
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead" style="color: white;">NEWS & EVENTS</h3>
+                <h3 class="display-1" style="color: white;">STAY UPDATED</h3>
+
+                <!-- <h1 class="display-2 display-2--light">Talent Pipeline</h1> -->
+            </div>
+        </div>
+        
+        <div class="row contact-content" data-aos="fade-up">
+            
+            <div class="contact-primary">
+                <h2> <a class='xyz' href="#contact">News </a> </h2>
+                {% if news.length==0 %}
+         <p> Hi, there are no updates, please subscribe to gte notified for all upcoming updates </p>      
+         {% endif %}        
+         <div class="cinfo" >
+            {% for new in news %}
+
+                            <h3>{{new['title']}}</h3>
+                        <p>{{new['content']}}</p>
+                       {% endfor %}
+                    </div>
+
+                    <h2> <a class='xyz' href="#contact">Latest Reports </a> </h2>
+
+                {% if reports.length==0 %}
+                <p> Hi, there are no updates right now, please subscribe to get notified for all upcoming updates </p>      
+                {% endif %}
+                <div class="cinfo" >
+                    {% for report in reports %}
+                    <h3>{{report['title']}}</h3>
+                    <p>{{report['content']}}</p>
+                   {% endfor %}
+                        </div>
+    
+                
+                <div class="message-warning">
+                    Something went wrong. Please try again.
+                </div> 
+            
+               
+                <div class="message-success">
+                    Your message was sent, thank you!<br/>
+                </div>
+        
+            </div> 
+            <div class = "vertical-rule"></div>
+            
+            <div class="contact-secondary" style="color: white;">
+                <div class="contact-info">
+        
+                    <h2 class="h6">Events</h2>
+        
+                    <div class="cinfo" >
+
+                        <p>
+                            Nemo cupiditate ab quibusdam quaerat impedit
+                            magni. Earum suscipit ipsum laudantium. Quo delectus
+                            est. Maiores voluptas ab sit natus veritatis ut.
+                            Debitis nulla cumque veritatis.  </p>
+                            <p>
+                                Nemo cupiditate ab quibusdam quaerat impedit
+                                magni. Earum suscipit ipsum laudantium. Quo delectus
+                                est. Maiores voluptas ab sit natus veritatis ut.
+                                Debitis nulla cumque veritatis.  </p>
+                    </div>
+        
+                    <div class="cinfo">
+                        <h5 style="color: white;">CLICK HERE FOR MORE INFO <br/>
+        </h5>
+                         
+                    </div>
+        <hr class="horizontal-rule">
+                    <div class="cinfo">
+                        <h2 style="color: white;">Join the Proximity Lab!</h5>
+                        <p>
+                            Nemo cupiditate ab quibusdam quaerat impedit
+magni. Earum suscipit ipsum laudantium. Quo delectus
+est. Maiores voluptas ab sit natus veritatis ut. <br/>
+                            
+                        </p>
+                        <h4>VIRTUALLY EVERY MONDAY 9AM
+                            CLICK HERE TO JOIN!</h4>
+                    </div>
+
+                </div> 
+            </div> 
+        
+        </div> 
+        
+        </section> 
+    <!-- end s-contact -->
+
+    <!-- about
+    ================================================== -->
+   
+    <!-- works
+    ================================================== -->
+    <section id='works' class="s-works">
+
+        <div class="intro-wrap">
+                
+            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                <div class="col-full">
+                    <h3 class="subhead">INTERACTIVE MAP </h3>
+                    <h1 class="display-2 display-2--light">Check out this map </h1> 
+                    <!-- <h2 class="subtitle"> with 5,000 biomedical companies in California </h2> -->
+                        
+                </div>
+            </div> <!-- end section-header -->
+
+        </div> <!-- end intro-wrap -->
+<!--Map -->
+
+        <div class="row works-content" data-aos="fade-up">
+            <div class="map">
+            <iframe  class ="map__element" src=" http://www.greenvisions.net/maps/fremont_industry/map.php"></iframe>
+<!-- 
+            <div class="col-full masonry-wrap">
+                 <div class="masonry"> 
+    
+                    <div class="masonry__brick" data-aos="fade-up">
+                        <div class="item-folio">
+                            <div class="map">
+
+                           
+
+                          <iframe  class ="map__element" src="http://www.greenvisions.net/maps/ca_biomedical_2020/map.php"></iframe>
+
+                            <div class="item-folio__thumb">
+                                   
+                                <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                   
+                                </a> 
+                            </div>
+                            </div>
+    
+                            <div class="item-folio__text">
+                                <h3 class="item-folio__title">
+                                    Map
+                                </h3>
+                                <p class="item-folio__cat">
+                                    Industries in Fremont
+                                </p>
+                            </div>
+    
+                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                <i class="icon-link"></i>
+                            </a>
+    
+                            <div class="item-folio__caption">
+                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                            </div>
+    
+                        </div>
+                    </div>  end masonry__brick 
+                </div> -->
+            </div>
+                  
+        </div> <!-- end works-content -->
+
+    </section> <!-- end s-works -->
+
+<!-- services
+    ================================================== -->
+    <section id='services' class="s-services">
+
+        <div class="row section-header has-bottom-sep" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">What We Do</h3>
+                <h1 class="display-2">Company Assistance
+                    to grow your business</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row services-list block-1-2 block-tab-full">
+            
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-brain"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Firm Strategy</h3>
+                    <p>We help companies strengthen their strategy-development processes, make better decisions, and implement their strategy. We assist with solutions to specific strategy issues or help design a whole new approach to strategic positioning and strategy implementation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <!-- <i class="icon-group"></i> -->
+                    <i class="fa-solid fa-book-bookmark"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Legal Intellectual Property 
+                        and Regulatory Approval</h3>
+                    <p>We help companies with intellectual property strategy and understanding regulatory approval processes and requirements.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <!-- <i class="icon-megaphone"></i> -->
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>  
+                <div class="service-text">
+                    <h3 class="h2">Venture Funding 
+                        VCs, Angels, and Grant Writing</h3>
+                    <p>We advise companies on how to raise capital in a way that is appropriate for the company’s stage of growth, goals, and challenges. We help companies determine the right mix of debt and equity financing and the amount of financing needed at each stage of growth to achieve company goals.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <!-- <i class="icon-earth"></i> -->
+                    <i class="fa-solid fa-chart-pie"></i>
+                    
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Financial Modeling</h3>
+                    <p>We help companies develop financial modeling for decision making and performing financial analysis for fund raising, valuation, budgeting and forecasting, resource allocation, and financial statement analysis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon">
+                    <!-- <i class="icon-cube"></i> -->
+                    <i class="fa-solid fa-gear"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Engineering R&D</h3>
+                    <p>We advise companies on new product development from customer needs assessment to product design, prototyping, and pilot testing.
+                    </p>
+                </div>
+            </div>
+    
+            <div class="col-block service-item" data-aos="fade-up">
+                 <div class="service-icon">
+                   <!-- <i class="icon-lego-block"></i> -->
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">Supply Chain 
+                        and Manufacturing</h3>
+                    <p>We help companies find supply chain partners for sourcing materials, components, and services. We also advise on production planning and prototype, pilot, and scaling manufacturing.
+                    </p>
+                </div>
+            </div>
+            
+
+        </div> <!-- end services-list -->
+        <div class="contact__us__button"> <a href="mailto: gregory.theyel@proximitylab.org" target="_blank">contact us for assistance</a> </div>
+    </section> <!-- end s-services -->
+
+    <!-- clients
+    ================================================== -->
+    <section id = "clients" class="s-clients"> 
+        <div class="s-clients2">
+
+
+        
+        <h3 class="subhead">MANUFACTURING LOCATION TOOL</h3>
+        <p class="display-2">  Try this tool! </p>
+           <h2 class="'subtitle" > 
+            <span>
+
+                This tool will help you assess the optimal value chain of your activity based on locations.
+            </span>
+ 
+           </h2>
+    <!-- <div class="form"> -->
+    </div>
+    <div class="form__parent">
+        <div class="form__child">
+            <h3 class="subhead form__subhead">PLEASE FILL IN WITH YOUR INPUTS</h3>
+
+        <!-- <form id="mc-form"  novalidate="true"> -->
+            <form  id ="mc-forms" >
+                <table>
+               
+               
+               <tr>
+               
+               
+                   <div class="table__row">
+                       <label class="td1"  for="mCost">PRODUCT PRICE <br>
+                           IN USD
+                       
+                       </label>
+                       
+                       <input class = "td2" name = "unitPrice"   id ="unitPrice" class="form-input"    required />
+                       <p id = 'unitPriceFail'></p>
+                       </div>
+               </tr>
+               <tr>
+               
+               
+                   <div class="table__row">
+                       <label class="td1" for="mCost"> MATERIAL COST <br>
+                           (BOM) IN USD 
+                           
+                       
+                       </label>
+                       
+                       <input class = "td2"    id ="materialCost" class="form-input"   required/>
+                       <p id = 'materialCostFail'></p>
+                       
+                       </div>
+               </tr>
+                <tr>
+               
+               
+                    <div class="table__row">
+                        <label class="td1" for="mCost">DIRECT LABOR <br> HOURS
+                        
+                        </label>
+                        
+                        <input class = "td2"   id ="directLabor" class="form-input"   required />
+                       <p id = 'directLaborFail'></p>
+                        
+                        </div>
+                </tr>
+                <tr>
+               
+               
+                    <div class="table__row">
+                        <label class="td1" for="mCost">UNIT WEIGHT <br>
+                            IN LBS
+                        
+                        </label>
+                        
+                        <input class = "td2" name = "unitWeight" type="string"  id ="unitWeight" class="form-input"   required />
+                      <p id = 'unitWeightFail'></p>
+                        
+                        </div>
+                </tr>
+               <tr>
+               
+               
+                   <div class="table__row">
+                       <label class="td1" for="mCost">UNITS PER YEAR
+                           
+                       </label>
+                       
+                       <input class = "td2" name = "unitPerYear" type="string"  id ="unitPerYear"  class="form-input"   required />
+                       <p id = 'unitsPerYearFail'></p>
+                       
+                   </div>
+               </tr>
+                                   </table>
+                                   
+                   
+                       <!-- <input type="submit" name="subscribe" type="'button" id = "submit" value="calculate"  /> -->
+                       <input  type="button" value="calculate" id="submit"></input>
+                       
+                       <label for="mc-email" class="subscribe-message"></label>
+                       </form>
+                       
+               
+               
+               
+               
+                         <div id = "the__table" style="display:none;">
+
+                           <div class="modal__wrapper" >
+                               <div class="modal__container">
+                                <div class="modal_container_child">
+
+                                
+
+                                        
+                                    <h3 class="subhead">COST AND ESTIMATIONS OF YOUR ACTIVITY <button class="close">&times;</button></h3>
+                                
+                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:
+                                collapse;table-layout:fixed;display:  inline-table; background-color: white;">
+                                
+                                <tbody>
+                                   <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl80" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl97" width="320" style="border-left:none;width:240pt" id = "year"></td>
+                                <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                                <!-- <td class="xl80" width="859" style="border-left:none;width:644pt">&nbsp;</td> -->
+                                </tr>
+                                
+                                <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl73" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">#</td>
+                                <td class="xl74" width="320" style="border-top:none;width:240pt">&nbsp;</td>
+                                <td class="xl81" width="77" style="width:58pt" >CA to CA</td>
+                                <td class="xl81" width="77" style="width:58pt">China to CA</td>
+                                <td class="xl81" width="77" style="width:58pt">CA to China</td>
+                                <td class="xl81" width="77" style="width:58pt">China to China</td>
+                                <td class="xl81" width="77" style="width:58pt">Mexico to CA</td>
+                                <!-- <td class="xl74" width="859" style="border-top:none;width:644pt">Explanation</td> -->
+                                </tr>
+                                
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">1</td>
+                                <td class="xl110" width="320" style="border-top:none;border-left:none;width:240pt">Product<span style="mso-spacerun:yes">&nbsp; </span>price</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name="productPrice">$5,000.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name="productPrice">$5,000.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name="productPrice">$5,000.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name="productPrice">$5,000.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name="productPrice">$5,000.00</td>
+                                <!-- <td class="xl94" width="859" style="border-top:none;border-left:none;width:644pt">Product
+                                price (input by company)</td> -->
+                                </tr>
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl92" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">&nbsp;</td>
+                                <td class="xl92" width="320" style="border-top:none;border-left:none;width:240pt">Product
+                                Cost</td>
+                                <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                                <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                                <!-- <td class="xl93" width="859" style="border-top:none;border-left:none;width:644pt">&nbsp;</td> -->
+                                </tr>
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">2</td>
+                                <td class="xl66" width="320" style="width:240pt">Unit cost, $</td>
+                                <td class="xl67" width="77" style="width:58pt" name = "unitCost" id ="unitCost">&nbsp;</td>
+                                <td class="xl67" width="77" style="width:58pt" name = "unitCost">&nbsp;</td>
+                                <td class="xl67" width="77" style="width:58pt" name = "unitCost">&nbsp;</td>
+                                <td class="xl67" width="77" style="width:58pt" name = "unitCost">&nbsp;</td>
+                                <td class="xl67" width="77" style="width:58pt" name = "unitCost">&nbsp;</td>
+                                <!-- <td class="xl78" width="859" style="border-top:none;border-left:none;width:644pt">Unit
+                                price = Material cost + production/assembly charges</td> -->
+                                </tr>
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">a</td>
+                                <td class="xl66" width="320" style="width:240pt">Material cost</td>
+                                <td class="xl67" width="77" style="width:58pt" name ="materialCost" id = "materialCost">$1,500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                                <!-- <td class="xl85" width="859" style="width:644pt">Bill of Materials (input by
+                                company)</td> -->   
+                                </tr>
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">b</td>
+                                <td class="xl66" width="320" style="width:240pt">Material overhead<span style="mso-spacerun:yes">&nbsp;</span></td>
+                                <td class="xl67" width="77" style="width:58pt" name="materialOverhead"  ></td>
+                                <td class="xl67" width="77" style="width:58pt" name="materialOverhead" ></td>
+                                <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$45.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$45.00</td>
+                                <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$45.00</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Assuming components shipping +
+                                overhead is 3% of BOM value</td> -->
+                                </tr>
+                                <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">c</td>
+                                <td class="xl66" width="320" style="width:240pt">Number of labor hours per unit</td>
+                                <td class="xl68" width="77" style="width:58pt"name ="directLaborhrs" id = "laborHours">50</td>
+                                <td class="xl68" width="77" style="width:58pt"name ="directLaborhrs">50</td>
+                                <td class="xl68" width="77" style="width:58pt"name ="directLaborhrs">50</td>
+                                <td class="xl68" width="77" style="width:58pt"name ="directLaborhrs">50</td>
+                                <td class="xl68" width="77" style="width:58pt"name ="directLaborhrs">50</td>
+                                <!-- <td class="xl86" width="859" style="width:644pt">Number of labor hours for
+                                assembly (input by company)</td> -->
+                                </tr>
+                                <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                                <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">d</td>
+                                <td class="xl70" width="320" style="border-top:none;border-left:none;width:240pt">Labor
+                                / Assembly charges</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCACA">$2,500.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCHCA">$500.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCACH">$2,500.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCHCH">$500.00</td>
+                                <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcMECA">$1,000.00</td>
+                                <!-- <td class="xl78" width="859" style="border-left:none;width:644pt">US assemblers
+                                $50 / hour; China assemblers $10 / hour; Mexico assemblers $20 / hour</td> -->
+                                </tr>
+                                <tr height="23" style="height:17.0pt;">
+                                    <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">e</td>
+                                    <td class="xl66" width="320" style="width:240pt">Unit weight, kg</td>
+                                    <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                                    <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                                    <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                                    <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                                    <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                                    <!-- <td class="xl85" width="859" style="width:644pt">Unit weight, kg (input by
+                                    company)</td> -->
+                                   </tr>
+                                
+                                <tr height="23" style="height:17.0pt;">
+                                    <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">f</td>
+                                    <td class="xl66" width="320" style="width:240pt">Number of units per year</td>
+                                    <td class="xl68" width="77" style="width:58pt" name="unitsPerYear">100</td>
+                                    <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                                    <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                                    <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                                    <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                                    <!-- <td class="xl85" width="859" style="width:644pt">Number of units per year (input
+                                    by company)</td> -->
+                                   </tr>
+                                
+                                </tbody>
+                                </table>
+                                
+                                
+                                </div>
+                               </div>
+                           </div>
+               
+                             <!-- <p  >this is prerak </p> -->
+                             <table border="0" cellpadding="0" cellspacing="0" width="" style="border-collapse:
+                             collapse;table-layout:fixed;width:100%;display:inline-table;">
+                             <!-- <colgroup>
+                             <col class="xl89" width="" style="mso-width-source:userset;mso-width-alt:725;
+                             width:10%">
+                             <col class="xl89" width="" style="mso-width-source:userset;mso-width-alt:10240;
+                             width:30%">
+                             <col class="xl89" width="" span="5" style="mso-width-source:userset;mso-width-alt:
+                             2474;width:10%">
+                             <col class="xl89" width="" style="mso-width-source:userset;mso-width-alt:27477;
+                             width:50%">
+                             </colgroup> -->
+                             <tbody>
+                                 <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl80" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl97" width="320" style="border-left:none;width:240pt" id = "year"></td>
+                              <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl88" width="77" style="border-left:none;width:58pt">&nbsp;</td>
+                              <!-- <td class="xl80" width="859" style="border-left:none;width:644pt">&nbsp;</td> -->
+                             </tr>
+                            
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl73" width="23" style="height:31.0pt;border-top:none;
+                              width:17pt">#</td>
+                              <td class="xl74" width="320" style="border-top:none;width:240pt">&nbsp;</td>
+                              <td class="xl81" width="77" style="width:58pt" id="myid">CA to CA</td>
+                              <td class="xl81" width="77" style="width:58pt">China to CA</td>
+                              <td class="xl81" width="77" style="width:58pt">CA to China</td>
+                              <td class="xl81" width="77" style="width:58pt">China to China</td>
+                              <td class="xl81" width="77" style="width:58pt">Mexico to CA</td>
+                              <!-- <td class="xl74" width="859" style="border-top:none;width:644pt">Explanation</td> -->
+                             </tr>
+                             
+                             <tr height="23" style="height:17.0pt; background-color: #e6e6e6;" >
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">1</td>
+                              <td class="xl110" width="320" style="border-top:none;border-left:none;width:240pt">Product<span style="mso-spacerun:yes">&nbsp; </span>price</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name = "productPrice">$5,000.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name = "productPrice">$5,000.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name = "productPrice">$5,000.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name = "productPrice">$5,000.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" name = "productPrice">$5,000.00</td>
+                              <!-- <td class="xl94" width="859" style="border-top:none;border-left:none;width:644pt">Product
+                              price (input by company)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl92" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">&nbsp;</td>
+                              <td class="xl92" width="320" style="border-top:none;border-left:none;width:240pt">Product
+                              Cost</td>
+                              <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl92" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <!-- <td class="xl93" width="859" style="border-top:none;border-left:none;width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">2</td>
+                              <td class="xl66" width="320" style="width:240pt">Unit cost, $</td>
+                              <td class="xl67" width="77" style="width:58pt"name ="unitCost" id ="unitCost">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt"name ="unitCost">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt"name ="unitCost">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt"name ="unitCost">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt"name ="unitCost">&nbsp;</td>
+                              <!-- <td class="xl78" width="859" style="border-top:none;border-left:none;width:644pt">Unit
+                              price = Material cost + production/assembly charges</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt; background-color: #e6e6e6;">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">a</td>
+                              <td class="xl66" width="320" style="width:240pt">Material cost</td>
+                              <td class="xl67" width="77" style="width:58pt" name ="materialCost" id = "materialCost">$1,500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name ="materialCost">$1,500.00</td>
+                              <!-- <td class="xl85" width="859" style="width:644pt">Bill of Materials (input by
+                              company)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">b</td>
+                              <td class="xl66" width="320" style="width:240pt">Material overhead<span style="mso-spacerun:yes">&nbsp;</span></td>
+                              <td class="xl67" width="77" style="width:58pt" name="materialOverhead"></td>
+                              <td class="xl67" width="77" style="width:58pt" name="materialOverhead"></td>
+                              <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$4.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$45.00</td>
+                              <td class="xl67" width="77" style="width:58pt" name="materialOverhead">$45.00</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Assuming components shipping +
+                              overhead is 3% of BOM value</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt; background-color: #e6e6e6;">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">c</td>
+                              <td class="xl66" width="320" style="width:240pt">Number of labor hours per unit</td>
+                              <td class="xl68" width="77" style="width:58pt" name ="directLaborhrs" id = "laborHours">50</td>
+                              <td class="xl68" width="77" style="width:58pt" name ="directLaborhrs">50</td>
+                              <td class="xl68" width="77" style="width:58pt" name ="directLaborhrs">50</td>
+                              <td class="xl68" width="77" style="width:58pt" name ="directLaborhrs">50</td>
+                              <td class="xl68" width="77" style="width:58pt" name ="directLaborhrs">50</td>
+                              <!-- <td class="xl86" width="859" style="width:644pt">Number of labor hours for
+                              assembly (input by company)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">d</td>
+                              <td class="xl70" width="320" style="border-top:none;border-left:none;width:240pt">Labor
+                              / Assembly charges</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCACA">$2,500.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCHCA">$500.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCACH">$2,500.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcCHCH">$500.00</td>
+                              <td class="xl71" width="77" style="border-top:none;border-left:none;width:58pt" id="lcMECA">$1,000.00</td>
+                              <!-- <td class="xl78" width="859" style="border-left:none;width:644pt">US assemblers
+                              $50 / hour; China assemblers $10 / hour; Mexico assemblers $20 / hour</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl90" width="23" style="height:17.0pt;width:17pt">e</td>
+                              <td class="xl83" width="320" style="border-top:none;border-left:none;width:240pt">Duty
+                              rate</td>
+                              <td class="xl72" width="77" style="border-top:none;border-left:none;width:58pt">0%</td>
+                              <td class="xl72" width="77" style="border-top:none;border-left:none;width:58pt">25%</td>
+                              <td class="xl72" width="77" style="border-top:none;border-left:none;width:58pt">20%</td>
+                              <td class="xl72" width="77" style="border-top:none;border-left:none;width:58pt">0%</td>
+                              <td class="xl72" width="77" style="border-top:none;border-left:none;width:58pt">3%</td>
+                              <!-- <td class="xl83" width="859" style="border-top:none;border-left:none;width:644pt">(Source:
+                              US Depetment of Commerce)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;width:17pt">f</td>
+                              <td class="xl78" width="320" style="border-left:none;width:240pt">Duty charge</td>
+                              <td class="xl71" width="77" style="border-left:none;width:58pt" id ="dutyChargeCACA">$0.00</td>
+                              <td class="xl71" width="77" style="border-left:none;width:58pt" id ="dutyChargeCHCA">$1,250.00</td>
+                              <td class="xl71" width="77" style="border-left:none;width:58pt" id ="dutyChargeCACH">$1,000.00</td>
+                              <td class="xl71" width="77" style="border-left:none;width:58pt" id ="dutyChargeCHCH">$0.00</td>
+                              <td class="xl71" width="77" style="border-left:none;width:58pt" id ="dutyChargeMECA">$150.00</td>
+                              <!-- <td class="xl83" width="859" style="border-left:none;width:644pt" >Duty charge =
+                              Product price x duty rate</td> -->
+                             </tr>
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl73" width="23" style="height:31.0pt;border-top:none;
+                              width:17pt">&nbsp;</td>
+                              <td class="xl74" width="320" style="border-top:none;width:240pt">&nbsp;</td>
+                              <td class="xl73" width="77" style="border-top:none;border-left:none;width:58pt">CA
+                              to CA</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">China to CA</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">CA to China</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">China to China</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">Mexico to CA</td>
+                              <!-- <td class="xl74" width="859" style="width:644pt">Explanation</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">3</td>
+                              <td class="xl99" width="320" style="width:240pt">Shipping Cost</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">a</td>
+                              <td class="xl75" width="320" style="width:240pt">Logistics costs</td>
+                              <td class="xl77" width="77" style="width:58pt">$200.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$400.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$400.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$200.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$300.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation -
+                              warehouwsing incoming and storage; fulfillment pick and pack)</td>
+                             </tr> -->
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">b</td>
+                              <td class="xl66" width="320" style="width:240pt">Customs fees</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="customFeesCACA">$0.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="customFeesCHCA">$79.50</td>
+                              <td class="xl67" width="77" style="width:58pt"id ="customFeesCACH">$169.50</td>
+                              <td class="xl67" width="77" style="width:58pt"id ="customFeesCHCH">$0.00</td>
+                              <td class="xl67" width="77" style="width:58pt"id ="customFeesMECA">$79.50</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation -
+                              China 3.39%, USA 1.59%)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">c</td>
+                              <td class="xl66" width="320" style="width:240pt"><span style="mso-spacerun:yes">&nbsp;</span>ISF</td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$35.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$35.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">d</td>
+                              <td class="xl66" width="320" style="width:240pt">National security fee</td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">e</td>
+                              <td class="xl66" width="320" style="width:240pt">Import handling fee</td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">f</td>
+                              <td class="xl66" width="320" style="width:240pt">Bill of Lading</td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$25.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">g</td>
+                              <td class="xl78" width="320" style="border-top:none;border-left:none;width:240pt">Documentation
+                              fee and other additional costs</td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl79" width="77" style="border-top:none;border-left:none;width:58pt">$195.00
+                              </td>
+                              <td class="xl79" width="77" style="border-top:none;border-left:none;width:58pt">$100.00
+                              </td>
+                              <td class="xl77" width="77" style="width:58pt">$0.00 </td>
+                              <td class="xl79" width="77" style="border-top:none;border-left:none;width:58pt">$195.00
+                              </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Boyd Corporation)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">h</td>
+                              <td class="xl66" width="320" style="width:240pt">Pallet/Crating cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$90.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$100.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$240.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$100.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$170.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Export packaging is more complex
+                              and has to meet standards of the countries of destination and origin
+                              (Soource: Continental Movers)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">i</td>
+                              <td class="xl66" width="320" style="width:240pt">Labor for packing</td>
+                              <td class="xl77" width="77" style="width:58pt">$30.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$10.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$30.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$10.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$15.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">One hour for packing</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt;background-color: #e6e6e6;">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">j</td>
+                              <td class="xl66" width="320" style="width:240pt">Unit weight, kg</td>
+                              <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                              <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                              <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                              <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                              <td class="xl96" width="77" style="width:58pt" name ="unitWeight">50.00</td>
+                              <!-- <td class="xl85" width="859" style="width:644pt">Unit weight, kg (input by
+                              company)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">k</td>
+                              <td class="xl66" width="320" style="width:240pt">Ocean freight cost</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="ofcCHCA">$1,200.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="ofcCACH">$1,200.00</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Bolt Express - China
+                              (to/from Shanghai port to/from Oakland port $24/kg)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">l</td>
+                              <td class="xl66" width="320" style="width:240pt">Ground freight cost</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">m</td>
+                              <td class="xl66" width="320" style="width:240pt">Port to Customer</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="pocCHCA">$600.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="pocCACH">$400.00</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Bolt Express - US
+                              $12/kg; China $8/kg)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">n</td>
+                              <td class="xl66" width="320" style="width:240pt">Factory to Customer</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="focCACA">$600.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="focCHCA">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt"id ="focCACH" >&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="focCHCH">$400.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="focMECA">$550.00</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">(Source: Bolt Express - US
+                              $12/kg; China $8/kg; Mexico $11/kg)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">o</td>
+                              <td class="xl66" width="320" style="width:240pt">Shipping insurance</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="siCACA">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="siCHCA">$250.00</td>
+                              <td class="xl67" width="77" style="width:58pt"id ="siCACH" >$250.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="siCHCH">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="siMECA">$250.00</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">US domestic shipping insurance 1% of value; international shipping insurance 5% of value</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr class="xl107" height="23" style="height:17.0pt">
+                              <td height="23" class="xl103" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl104">Cumulative Product + Shipping Total per unit</td>
+                              <td class="xl105" width="77" style="width:58pt" id = "cpstCACA">5,010.00</td>
+                              <td class="xl105" width="77" style="width:58pt" id = "cpstCHCA">5,989.50</td>
+                              <td class="xl105" width="77" style="width:58pt" id = "cpstCACH">7,629.50</td>
+                              <td class="xl105" width="77" style="width:58pt" id = "cpstCHCH">2,780.00</td>
+                              <td class="xl105" width="77" style="width:58pt" id = "cpstMECA">4,114.50</td>
+                              <!-- <td class="xl106" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr class="xl107" height="23" style="height:17.0pt">
+                              <td height="23" class="xl111" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl112">&nbsp;</td>
+                              <td class="xl113" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl113" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl113" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl113" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl113" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl114" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt; background-color: #e6e6e6;">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">p</td>
+                              <td class="xl66" width="320" style="width:240pt">Number of units per year</td>
+                              <td class="xl68" width="77" style="width:58pt" name="unitsPerYear">100</td>
+                              <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                              <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                              <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                              <td class="xl68" width="77" style="width:58pt" name = 'unitsPerYear'>100</td>
+                              <!-- <td class="xl85" width="859" style="width:644pt">Number of units per year (input
+                              by company)</td> -->
+                             </tr>
+                             <tr class="xl107" height="23" style="height:17.0pt">
+                              <td height="23" class="xl103" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl104">Cumulative Product + Shipping Total Units per year</td>
+                              <td class="xl115" width="77" style="width:58pt" id="cpstpyCACA">$501,000.00</td>
+                              <td class="xl115" width="77" style="width:58pt"id="cpstpyCHCA">$598,950.00</td>
+                              <td class="xl115" width="77" style="width:58pt"id="cpstpyCACH">$762,950.00</td>
+                              <td class="xl115" width="77" style="width:58pt"id="cpstpyCHCH">$278,000.00</td>
+                              <td class="xl115" width="77" style="width:58pt"id="cpstpyMECA">$411,450.00</td>
+                              <!-- <td class="xl106" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl84">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">4</td>
+                              <td class="xl102" style="border-top:none;border-left:none">5 Year Forecast</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <!-- <td class="xl78" width="859" style="border-top:none;border-left:none;width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl65" width="23" style="height:31.0pt;width:17pt">a</td>
+                              <td class="xl66" width="320" style="width:240pt">Wage inflation, forecast, annual 
+                              %</td> 
+                              <td class="xl67" width="77" style="width:58pt" id = "wiCACA">$417.50</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "wiCHCA">$252.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "wiCACH">$417.50</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "wiCHCH">$252.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "wiMECA">$309.00</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">The wage inflation for the
+                              coming year had been used to forecast the annual wage inflation in each
+                              location. Source: Economist - US 3.1% per year; China 8.2%; Mexico 5.4%.
+                              Compounded for 5 years results in US 16.7%, China 50.4%, Mexico 30.9%. This
+                              results in the labor cost increase after 5 years.<span style="mso-spacerun:yes">&nbsp;</span></td> -->
+                             </tr>
+                             <tr class="xl107" height="23" style="height:17.0pt">
+                              <td height="23" class="xl103" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl104">Cumulative Product + Shipping 5 Year Forecast per unit</td>
+                              <td class="xl115" width="77" style="width:58pt" id ="cpst5yCACA">$6,241.50</td>
+                              <td class="xl115" width="77" style="width:58pt" id ="cpst5yCHCA">$5,427.50</td>
+                              <td class="xl115" width="77" style="width:58pt" id ="cpst5yCACH">$8,047.00</td>
+                              <td class="xl115" width="77" style="width:58pt" id ="cpst5yCHCH">$3,032.00</td>
+                              <td class="xl115" width="77" style="width:58pt" id ="cpst5yMECA">$4,423.50</td>
+                              <!-- <td class="xl106" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl84">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl95" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl73" width="23" style="height:31.0pt;border-top:none;
+                              width:17pt">&nbsp;</td>
+                              <td class="xl74" width="320" style="border-top:none;width:240pt">&nbsp;</td>
+                              <td class="xl73" width="77" style="border-top:none;border-left:none;width:58pt">CA
+                              to CA</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">China to CA</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">CA to China</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">China to China</td>
+                              <td class="xl74" width="77" style="border-top:none;width:58pt">Mexico to CA</td>
+                              <!-- <td class="xl74" width="859" style="border-top:none;width:644pt">Explanation</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl90" width="23" style="height:17.0pt;width:17pt">5</td>
+                                <td class="xl100">Tooling Cost</td>
+                                <td class="xl79" width="77" style="border-top:none;width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Costs that are associated after
+                                physical delivery, and before final check off by the customer</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;width:17pt">a</td>
+                                <td class="xl80" style="border-left:none">Tooling cost (if necessary)</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostCACA">$800.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostCHCA">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostCACH">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostCHCH">$600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostMECA">$1,500.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Assuming direct flight.</td> -->
+                               </tr>
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">b</td>
+                                <td class="xl80" style="border-top:none;border-left:none">Tooling cost per unit</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostPUCACA">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostPUCHCA">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostPUCACH">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostPUCHCH">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "toolingCostPUMECA">$3,200.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                                hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                                than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                                is 2 weeks.</td> -->
+                               </tr>
+                             
+                               
+                             
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl90" width="23" style="height:17.0pt;width:17pt">6</td>
+                              <td class="xl100">Deployment Cost</td>
+                              <td class="xl79" width="77" style="border-top:none;width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Costs that are associated after
+                              physical delivery, and before final check off by the customer</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;width:17pt">a</td>
+                              <td class="xl80" style="border-left:none">Travel cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$800.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$600.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,500.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Assuming direct flight.</td> -->
+                             </tr>
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                              width:17pt">b</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Labor cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$8,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,600.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$8,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,600.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,200.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                              hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                              than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                              is 2 weeks.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">c</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Lodging cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">This is the cost associated with
+                              hotels and meals of deployment personnel at the customer site. US lodging
+                              $150 / day. China and Mexico lodging $50 / day.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">&nbsp;</td>
+                              <td class="xl109" style="border-top:none;border-left:none">Total deployment
+                              costs</td>
+                              <td class="xl77" width="77" style="width:58pt" id ="tdcCACA">$11,800.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="tdcCACH">$7,600.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="tdcCHCA">$12,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="tdcCHCH">$3,200.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="tdcMECA">$7,700.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">&nbsp;</td>
+                                <td class="xl109" style="border-top:none;border-left:none">Total deployment
+                                costs per unit </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="tdcPUCACA">$11,800.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="tdcPUCACH">$7,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="tdcPUCHCA">$12,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="tdcPUCHCH">$3,200.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="tdcPUMECA">$7,700.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                               </tr>                             
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">&nbsp;</td>
+                              <td class="xl80" style="border-top:none;border-left:none">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl90" width="23" style="height:17.0pt;width:17pt">7</td>
+                                <td class="xl100">Quality Control Cost</td>
+                                <td class="xl79" width="77" style="border-top:none;width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Costs that are associated after
+                                physical delivery, and before final check off by the customer</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;width:17pt">a</td>
+                                <td class="xl80" style="border-left:none">Quality Control Cost</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostCACA">$800.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostCHCA">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostCACH">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostCHCH">$600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostMECA">$1,500.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Assuming direct flight.</td> -->
+                               </tr>
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">b</td>
+                                <td class="xl80" style="border-top:none;border-left:none">Quality Control Cost per unit</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostPUCACA">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostPUCHCA">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostPUCACH">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostPUCHCH">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "qualityCostPUMECA">$3,200.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                                hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                                than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                                is 2 weeks.</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">&nbsp;</td>
+                                <td class="xl80" style="border-top:none;border-left:none">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                               </tr>
+
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl90" width="23" style="height:17.0pt;width:17pt">8</td>
+                                <td class="xl100">Packaging Cost</td>
+                                <td class="xl79" width="77" style="border-top:none;width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Costs that are associated after
+                                physical delivery, and before final check off by the customer</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;width:17pt">a</td>
+                                <td class="xl80" style="border-left:none">Per unit packaging costs (if necessary)</td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ppuCACA">$800.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ppuCHCA">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ppuCACH">$3,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ppuCHCH">$600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ppuMECA">$1,500.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">Assuming direct flight.</td> -->
+                               </tr>
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">b</td>
+                                <td class="xl80" style="border-top:none;border-left:none">Packaging transportation costs (if necessary)</td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ptcCACA">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ptcCHCA">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ptcCACH">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ptcCHCH">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt"  id ="ptcMECA">$3,200.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                                hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                                than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                                is 2 weeks.</td> -->
+                               </tr>
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">c</td>
+                                <td class="xl80" style="border-top:none;border-left:none">Total packaging costs and transportation costs (if necessary)</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcCACA">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcCHCA">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcCACH">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcCHCH">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcMECA">$3,200.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                                hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                                than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                                is 2 weeks.</td> -->
+                               </tr>
+                               
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">d</td>
+                                <td class="xl80" style="border-top:none;border-left:none">Total packaging costs per unit (if necessary)</td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcPUCACA">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcPUCHCA">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcPUCACH">$8,000.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcPUCHCH">$1,600.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id = "tpcPUMECA">$3,200.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                                hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                                than China and 2.5 times more expensive than Mexico. Deployment&nbsp;period
+                                is 2 weeks.</td> -->
+                               </tr>
+                               
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                                width:17pt">&nbsp;</td>
+                                <td class="xl80" style="border-top:none;border-left:none">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                               </tr>
+
+
+
+
+
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">9</td>
+                              <td class="xl97" style="border-top:none;border-left:none">Maintenance Cost</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Labor and material costs that
+                              are associated with the on-going maintenance of the product.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">a</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Replacement parts
+                              costs</td>
+                              <td class="xl77" width="77" style="width:58pt">$250.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$250.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$250.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$250.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$250.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">This is the cost associated with
+                              replacement parts required for ongoing maintenance of the product. Assumes
+                              25% of original BOM.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">b</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Travel cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$800.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$3,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$600.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,500.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">Assuming direct flight. This is
+                              the cost associated with maintenance personnel’s travel to customer site.</td> -->
+                             </tr>
+                             <tr height="41" style="height:31.0pt">
+                              <td height="41" class="xl98" width="23" style="height:31.0pt;border-top:none;
+                              width:17pt">c</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Labor cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$4,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$800.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$4,000.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$800.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,600.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">US engineers $50 / hour * 160
+                              hours * 2 engineers. Assuming that US labor is about 5 times more expensive
+                              than China and 2.5 times more expensive than Mexico. Maintenance&nbsp;period
+                              is one week.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl98" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">d</td>
+                              <td class="xl80" style="border-top:none;border-left:none">Lodging cost</td>
+                              <td class="xl77" width="77" style="width:58pt">$1,500.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,500.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$500.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$500.00 </td>
+                              <td class="xl77" width="77" style="width:58pt">$1,500.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">This is the cost associated with
+                              hotels and meals of deployment personnel at the customer site. US lodging
+                              $150 / day. China and Mexico lodging $50 / day.</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl101" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl108">Total maintenance costs</td>
+                              <td class="xl77" width="77" style="width:58pt" id ="mcCACA">$6,550.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="mcCACH">$5,550.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="mcCHCA">$7,750.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="mcCHCH">$2,150.00 </td>
+                              <td class="xl77" width="77" style="width:58pt" id ="mcMECA">$4,850.00 </td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl101" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl108">Total maintenance costs per unit</td>
+                                <td class="xl77" width="77" style="width:58pt" id ="mcPUCACA">$6,550.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="mcPUCACH">$5,550.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="mcPUCHCA">$7,750.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="mcPUCHCH">$2,150.00 </td>
+                                <td class="xl77" width="77" style="width:58pt" id ="mcPUMECA">$4,850.00 </td>
+                                <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                               </tr>
+
+
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl77" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl66" width="859" style="width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">10</td>
+                              <td class="xl92" width="320" style="border-top:none;border-left:none;width:240pt">Risk
+                              Cost</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <td class="xl69" width="77" style="border-top:none;border-left:none;width:58pt">&nbsp;</td>
+                              <!-- <td class="xl78" width="859" style="border-top:none;border-left:none;width:644pt">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">a</td>
+                                <td class="xl66" width="320" style="width:240pt">Design error risk</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "derCACA">$300.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "derCHCA">$150.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "derCACH">$150.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "derCHCH">$300.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "derMECA">$350.00</td>
+                                <!-- <td class="xl87" width="859" style="border-top:none;width:644pt">Standard rework
+                                rates by country as a % of sales price (US 3%; China 6%; Mexico 7%)</td> -->
+                               </tr>
+                             
+                             
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">b</td>
+                              <td class="xl66" width="320" style="width:240pt">Rework risk</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "rwrCACA">$300.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "rwrCHCA">$150.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "rwrCACH">$150.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "rwrCHCH">$300.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "rwrMECA">$350.00</td>
+                              <!-- <td class="xl87" width="859" style="border-top:none;width:644pt">Standard rework
+                              rates by country as a % of sales price (US 3%; China 6%; Mexico 7%)</td> -->
+                             </tr>
+                             <tr height="23" style="mso-height-source:userset;height:17.0pt">
+                              <td height="23" class="xl82" width="23" style="height:17.0pt;border-top:none;
+                              width:17pt">c</td>
+                              <td class="xl83" width="320" style="border-top:none;border-left:none;width:240pt">IP
+                              risk</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="iprCACA">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="iprCHCA">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="iprCACH">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="iprCHCH">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="iprMECA">$500.00</td>
+                              <!-- <td class="xl87" width="859" style="border-top:none;width:644pt">Standard IP risk
+                              by country as a % of sales price (US 1%; China 15%; Mexico 10%)</td> -->
+                             </tr>
+                             <tr height="45" style="mso-height-source:userset;height:34.0pt">
+                              <td height="45" class="xl82" width="23" style="height:34.0pt;width:17pt">d</td>
+                              <td class="xl78" width="320" style="border-left:none;width:240pt">Traceability
+                              risk</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trCACA">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trCHCA">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trCACH">$50.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trCHCH">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trMECA">$500.00</td>
+                              <!-- <td class="xl83" width="859" style="border-top:none;border-left:none;width:644pt">Traceability
+                              helps manufacturers ensure compliance with government regulations; better
+                              protect their brand and consumers; and perform rapid, focused and
+                              cost-effective recalls that minimize financial impact. Traceability risk by
+                              country as a % of sales price (US 1%; China 15%; Mexico 10%)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl69" width="23" style="height:17.0pt;width:17pt">e</td>
+                              <td class="xl78" width="320" style="border-top:none;border-left:none;width:240pt">Supplier
+                              risk</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="srCACA">$250.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="srCHCA">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="srCACH">$250.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="srCHCH">$750.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id ="srMECA">$500.00</td>
+                              <!-- <td class="xl88" style="border-left:none">Economic stability of the supplier =
+                              unit price x supplier economic instability risk. Supplier risk by country as
+                              a % of sales price (US 5%; China 15%; Mexico 10%)</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl67" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl84">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl91" width="320" style="width:240pt">Total risk costs</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trsCACA">$500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trsCHCA">$2,550.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trsCACH">$500.00</td>
+                              <td class="xl67" width="77" style="width:58pt" id = "trsCHCH">$2,550.00</td> 
+                              <td class="xl67" width="77" style="width:58pt" id = "trsMECA">$1,850.00</td>
+                              <!-- <td class="xl84">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl91" width="320" style="width:240pt">Total risk costs per unit</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "trsPUCACA">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "trsPUCHCA">$2,550.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "trsPUCACH">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "trsPUCHCH">$2,550.00</td> 
+                                <td class="xl67" width="77" style="width:58pt" id = "trsPUMECA">$1,850.00</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+
+                             <tr height="23" style="height:17.0pt">
+                              <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                              <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                              <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                              <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                              <!-- <td class="xl84">&nbsp;</td> -->
+                             </tr>
+                             <tr height="23" style="height:17.0pt ; background-color:#C6E0B4;">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt;">&nbsp;</td>
+                                <td class="xl91" width="320" style="width:240pt">Total Other Costs (Tooling, Deployment, Quality Control, Packaging, Maintenance, and Risk Costs)</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocCACA">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocCHCA">$2,550.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocCACH">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocCHCH">$2,550.00</td> 
+                                <td class="xl67" width="77" style="width:58pt" id = "tocMECA">$1,850.00</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl91" width="320" style="width:240pt">Total Other Costs per Unit (Tooling, Deployment, Quality Control, Packaging, Maintenance, and Risk Costs)</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocPUCACA">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocPUCHCA">$2,550.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocPUCACH">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "tocPUCHCH">$2,550.00</td> 
+                                <td class="xl67" width="77" style="width:58pt" id = "tocPUMECA">$1,850.00</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt;background-color:#C6E0B4;">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl91" width="320" style="width:240pt">Product + Shipping + Other Costs Per Unit Per Year</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "psoPUCACA">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "psoPUCHCA">$2,550.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "psoPUCACH">$500.00</td>
+                                <td class="xl67" width="77" style="width:58pt" id = "psoPUCHCH">$2,550.00</td> 
+                                <td class="xl67" width="77" style="width:58pt" id = "psoPUMECA">$1,850.00</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+                               <tr height="23" style="height:17.0pt">
+                                <td height="23" class="xl65" width="23" style="height:17.0pt;width:17pt">&nbsp;</td>
+                                <td class="xl66" width="320" style="width:240pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <td class="xl76" width="77" style="width:58pt">&nbsp;</td>
+                                <!-- <td class="xl84">&nbsp;</td> -->
+                               </tr>
+
+                               <tr height="41" style="height:31.0pt">
+                                <td height="41" class="xl73" width="23" style="height:31.0pt;border-top:none;
+                                width:17pt">#</td>
+                                <td class="xl74" width="320" style="border-top:none;width:240pt">&nbsp;</td>
+                                <td class="xl81" width="77" style="width:58pt" id="myid">CA to CA</td>
+                                <td class="xl81" width="77" style="width:58pt">China to CA</td>
+                                <td class="xl81" width="77" style="width:58pt">CA to China</td>
+                                <td class="xl81" width="77" style="width:58pt">China to China</td>
+                                <td class="xl81" width="77" style="width:58pt">Mexico to CA</td>
+                                <!-- <td class="xl74" width="859" style="border-top:none;width:644pt">Explanation</td> -->
+                               </tr>
+                               
+
+
+
+
+
+                             <!--[if supportMisalignedColumns]-->
+                             <tr height="0" style="display:none">
+                              <td width="23" style="width:17pt"></td>
+                              <td width="320" style="width:240pt"></td>
+                              <td width="77" style="width:58pt"></td>
+                              <td width="77" style="width:58pt"></td>
+                              <td width="77" style="width:58pt"></td>
+                              <td width="77" style="width:58pt"></td>
+                              <td width="77" style="width:58pt"></td>
+                              <!-- <td width="859" style="width:644pt"></td> -->
+                             </tr>
+                             <!--[endif]-->
+                            </tbody></table>
+             
+                         </div>        
+
+                       
+    </div>
+               
+   
+   
+    </div>
+    <p class="help_text"> <span> If you need assistance on how to calculate your inputs <br> please connect with us by  <a href="mailto: gregory.theyel@proximitylab.org">Email</a>
+        <br>  and we’ll lead you back! </span></p>    
+</section>
+
+
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+
+                <div class="footer-logo"></div>
+              <p>  We are the Fremont Institute for Manufacturing, and we provide tools and assistance to help companies grow, expand, and scale.</p>  
+                
+                <button type="submit" class="info-button"> Join us </button>
+
+                <p style="margin-top: 20px;">developed by</p>
+            <img src="images/FIH logo with boarders.jpg" alt="" style="width:160px; margin-bottom: 20px;">
+            </div>
+
+            <div class="col-six tab-full right footer-subscribe">
+
+                <h4>Follow the institute</h4>
+                
+                <div class="subscribe-form">
+
+                    <form method="post" class="group" novalidate="true" >
+                        <input type="email" name="email" class="email" id="mc-email" placeholder="Email Address" required="">
+                        <!-- <input type="submit" name="subscribe" value="Subscribe">  -->
+                        <button type="submit" class="info-button" value="submit"> Subscribe </button>
+                        <!-- <label for="mc-email" class="subscribe-message"></label> -->
+                    
+                    </form>
+                </div>  
+
+            </div>
+
+        </div> 
+
+        <div class="row footer-bottom">
+
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© Copyright Fremont Institute of Manufacturing 2022</span> 
+
+                </div>
+
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                    "Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+                "Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calculations.js"></script>
+    
+</body>
+
+</html>
