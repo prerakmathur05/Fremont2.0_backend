@@ -6,10 +6,100 @@
 }
 
 
-#the__table{
-    margin: 0 !important;
-    padding-left: 20px;
-    padding-right: 20px;
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.pcs:after {
+  content: " pcs";
+}
+
+.cur:before {
+  content: "$";
+}
+
+.per:after {
+  content: "%";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* padding: 0.2em 2em; */
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  padding: 2px;
+}
+table th {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+table th,
+table td {
+  padding: 0.4em;
+
+}
+
+table.fold-table > tbody > tr.view td,
+table.fold-table > tbody > tr.view th {
+  cursor: pointer;
+}
+table.fold-table > tbody > tr.view td:first-child,
+table.fold-table > tbody > tr.view th:first-child {
+  position: relative;
+  padding-left: 20px;
+}
+table.fold-table > tbody > tr.view td:first-child:before,
+table.fold-table > tbody > tr.view th:first-child:before {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  width: 9px;
+  height: 16px;
+
+  margin-top: -8px;
+  font: 16px fontawesome;
+  color: #259CF4;
+
+  content: "";
+  transition: all 0.3s ease;
+}
+table.fold-table > tbody > tr.view:nth-child {
+  background: #eee;
+}
+table.fold-table > tbody > tr.view:hover {
+  background: #F0EEED;
+}
+table.fold-table > tbody > tr.view.open {
+
+  color: white;
+}
+table.fold-table > tbody > tr.view.open td:first-child:before,
+table.fold-table > tbody > tr.view.open th:first-child:before {
+  transform: rotate(-180deg);
+	color: #259CF4;
+
+}
+table.fold-table > tbody > tr.fold {
+  display: none;
+}
+table.fold-table > tbody > tr.fold.open {
+  display: table-row;
+}
+
+.fold-content {
+  padding: 0.5em;
+}
+.fold-content h3 {
+  margin-top: 0;
+}
+.fold-content > table {
+  border: 2px solid #ccc;
+}
+.fold-content > table > tbody tr:nth-child(even) {
+  background: #eee;
 }
 
 .modal__wrapper{
@@ -100,7 +190,9 @@
 /* Below is the CSS code just for the table */
 
 tr
-	{mso-height-source:auto;}
+{mso-height-source:auto;
+
+}
 col
 	{mso-width-source:auto;}
 br
@@ -125,12 +217,13 @@ br
 	mso-style-name:Normal;
 	mso-style-id:0;}
 td
-	{mso-style-parent:style0;
+	{
+	mso-style-parent:style0;
 	padding-top:1px;
 	padding-right:1px;
 	padding-left:1px;
 	mso-ignore:padding;
-	color:black;
+	color:black;	
 	font-size:12.0pt;
 	font-weight:400;
 	font-style:normal;
@@ -658,3 +751,24 @@ td
 	background:#C6E0B4;
 	mso-pattern:black none;
 	white-space:normal;}
+
+
+.parent__table{
+	/* padding: 10px; */
+	background-color: white;
+	margin-bottom: 10px;
+}
+
+.view__table{
+
+	/* class declared for future modification in the table section */
+	/* padding:10px; */
+	/* background-color: white; */
+	/* overflow:auto; */
+	/* overflow-x:visible; */
+	/* padding-right: 20px; */
+	/* margin-bottom: 10px; */
+
+	 /* background-color: #e6e6e6; */
+
+}

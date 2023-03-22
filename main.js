@@ -80,11 +80,11 @@ app.use(cookieParser());
 
 app.get('/', (request, response) =>  {
 	// Retrieve statistical data
-	connection.query(' SELECT * FROM news; SELECT * FROM reports;', (error, results, fields) => {
+	connection.query(' SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map;', (error, results, fields) => {
 		// Render dashboard template
 		if (results) {
 
-			response.render('index.html', {  news: results[0], reports: results[1],  timeElapsedString: timeElapsedString });
+			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], timeElapsedString: timeElapsedString });
 		}
 		else{
 			response.render('index.html')
