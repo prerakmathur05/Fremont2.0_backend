@@ -157,10 +157,31 @@
             AdobeAn.compositionLoaded(lib.properties.id);
             fnStartAnimation();
         }
+        const smallDevice=window.matchMedia("(max-width: 1000px)");
+        smallDevice.addListener(changeHeight);
+        function changeHeight (e){
+            if (e.matches){
+                // console.log('mobile');
+                // var primarycontact=document.getElementsByClassName('contact-primary')[0];
+                // var secondarycontact=document.getElementsByClassName('contact-secondary')[0];
+                var verticalLine=document.getElementsByClassName('vertical-rule')[0];
+                // let verticalLineheight=(Math.max(primarycontact.clientHeight, secondarycontact.clientHeight)*100)/window.innerHeight;
+                verticalLine.style.height="0vh";
+            }
+            else{
+                //changeHeight2();
+                var primarycontact=document.getElementsByClassName('contact-primary')[0];
+                var secondarycontact=document.getElementsByClassName('contact-secondary')[0];
+                var verticalLine=document.getElementsByClassName('vertical-rule')[0];
+                let verticalLineheight=(Math.max(primarycontact.clientHeight, secondarycontact.clientHeight)*100)/window.innerHeight;
+                verticalLine.style.height=verticalLineheight+"vh";
+            }
+        }
+        changeHeight(smallDevice);
     </script>
 </head>
 
-<body id="top" onload="init();">
+<body id="top" onload="init(); changeHeight(smallDevice)">
 
     <!-- header
     ================================================== -->
@@ -274,8 +295,27 @@
         </div>
         </div>
         <div class="row services-list block-1-2 block-tab-full">
-
+            {% if labboard %}
             <div class="col-block service-item" data-aos="fade-up">
+                {% for labmember in labboard %}
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">{{labmember.name}}</h3>
+                    <p>{{labmember.position}}, Proximity Lab <br>
+                        <a href="mailto:{{labmember.email}}">
+                            {{labmember.email}}
+                        </a>
+                    </p>
+                </div>
+                {% endfor %}
+                
+            </div>
+            {% endif %}
+            <!-- <div class="col-block service-item" data-aos="fade-up">
 
                 <div class="service-icon">
 
@@ -455,7 +495,7 @@
                         </a>
                     </p>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -605,12 +645,13 @@
 
         <div class="row works-content" data-aos="fade-up">
 
-
-
-
-            <div class="map">
+            <div class="map"></div>
+            {%if maps %}
+                <iframe class="map__element" src='{{maps[0].link}}'></iframe>
+            {% endif %}
+            <!-- <div class="map">
                 <iframe class="map__element" src=http://www.greenvisions.net/maps/ca_biomedical_2020/map.php></iframe>
-            </div>
+            </div> -->
 
 
         </div> <!-- end works-content -->
@@ -3117,8 +3158,13 @@
 
                 <div class="cinfo">
 
-
-                    <h3>Assistance</h3>
+                    {%if news %}
+                        {% for newsitem in news %}
+                            <h3>{{ newsitem.title }}</h3>
+                            <p>{{newsitem.content}}</p>
+                        {% endfor %}
+                    {% endif %}
+                    <!-- <h3>Assistance</h3>
                     <p>Proximity Lab has helped its 50th company with
                         engineering and business assistance.</p>
 
@@ -3131,24 +3177,34 @@
                     <h3>Awards</h3>
                     <p>Proximity Lab has been awarded the
                         "Comprehensive Business-Level Economic Analysis"
-                        study from East Bay EDA.</p>
+                        study from East Bay EDA.</p> -->
 
                 </div>
 
                 <h2 class='blue'>Latest Reports </h2>
-
-
+                {% if reports %}
                 <div class="cinfo">
+                    {% for report in reports %}
+                    <h3>{{report.title}}</h3>
+                    <!-- <p>We are the Fremont Institute for Manufacturing, and we provide tools and assistance to help companies grow, expand, and scale.</p> -->
+                    <a href="/assets/reports/{{report.title}}.pdf" target="_blank">
+
+                        <button type="submit" class="info-button"> download report </button>
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <!-- <div class="cinfo">
 
                     <h3>Alameda County
                         Biomedical Industry</h3>
-                    <!-- <p>We are the Fremont Institute for Manufacturing, and we provide tools and assistance to help companies grow, expand, and scale.</p> -->
-                    <a href="/assets/reports/report_proximity_lab.pdf" target="_blank">
+                    <p>We are the Fremont Institute for Manufacturing, and we provide tools and assistance to help companies grow, expand, and scale.</p> -->
+                    <!--<a href="/assets/reports/report.pdf" target="_blank">
 
                         <button type="submit" class="info-button"> download report </button>
                     </a>
 
-                </div>
+                </div> -->
 
 
                 <div class="message-warning">

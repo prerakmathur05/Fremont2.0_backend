@@ -1,5 +1,5 @@
 // Include the dependencies
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -15,14 +15,21 @@ const { Console } = require('console');
 const secret_key = 'your secret key';
 // Update the below details with your own MySQL connection details
 
-var connection;
+var connection=mysql.createConnection({
+    host: "localhost",
+    port:"3306",
+    user: "root",
+    password:"Sherlock@221",
+    database:"proximity_lab_2",
+	multipleStatements: true
+});
 
 function handleDisconnect() {
-  connection = mysql.createConnection({host: '72.167.86.209',
-  user: 'adminproximity',
-  password: '4av}VjlGP3u&',
-  database: 'proximitylogin',
-  multipleStatements: true}); // Recreate the connection, since
+//   connection = mysql.createConnection({host: '72.167.86.209',
+//   user: 'adminproximity',
+//   password: '4av}VjlGP3u&',
+//   database: 'proximitylogin',
+//   multipleStatements: true}); // Recreate the connection, since
                                                   // the old one cannot be reused.
 
   connection.connect(function(err) {              // The server is either down
@@ -80,11 +87,36 @@ app.use(cookieParser());
 
 app.get('/', (request, response) =>  {
 	// Retrieve statistical data
-	connection.query(' SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map;', (error, results, fields) => {
+	connection.query(' SELECT * FROM news; SELECT * FROM reports where id; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
 		// Render dashboard template
 		if (results) {
-
-			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], timeElapsedString: timeElapsedString });
+			let title;
+			results[1].forEach(reports => {
+				title=reports.title;
+				//console.log('./static/assets/reports/'+title+'.pdf');
+				reports.PDF && fs.writeFile('./static/assets/reports/'+title+'.pdf',Buffer.from(reports.PDF.buffer),(error)=>{
+						if(error) console.log(error);
+						//console.log('file downloaded');
+						const files=fs.readdirSync('./static/assets/reports').map((nameoffile)=>{
+							return {
+								name: path.basename(nameoffile),
+								url:`/static/assets/reports/${nameoffile}`,
+							};
+						});
+					});
+			});
+			// fs.writeFile('./static/assets/reports/report.pdf',Buffer.from(results[1][0].PDF.buffer),(error)=>{
+			// 	if(error) console.log(error);
+			// 	console.log('file downloaded');
+			// 	const files=fs.readdirSync('./static/assets/reports').map((nameoffile)=>{
+			// 		return {
+			// 			name: path.basename(nameoffile),
+			// 			url:`/static/assets/reports/${nameoffile}`,
+			// 		};
+			// 	});
+			// });
+			//console.log(results[1])
+			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], timeElapsedString: timeElapsedString });
 		}
 		else{
 			response.render('index.html')
