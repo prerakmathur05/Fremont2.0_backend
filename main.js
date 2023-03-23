@@ -87,7 +87,7 @@ app.use(cookieParser());
 
 app.get('/', (request, response) =>  {
 	// Retrieve statistical data
-	connection.query(' SELECT * FROM news; SELECT * FROM reports where id; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
+	connection.query(' SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
 		// Render dashboard template
 		if (results) {
 			let title;
