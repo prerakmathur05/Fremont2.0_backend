@@ -105,17 +105,9 @@ app.get('/', (request, response) =>  {
 						});
 					});
 			});
-			// fs.writeFile('./static/assets/reports/report.pdf',Buffer.from(results[1][0].PDF.buffer),(error)=>{
-			// 	if(error) console.log(error);
-			// 	console.log('file downloaded');
-			// 	const files=fs.readdirSync('./static/assets/reports').map((nameoffile)=>{
-			// 		return {
-			// 			name: path.basename(nameoffile),
-			// 			url:`/static/assets/reports/${nameoffile}`,
-			// 		};
-			// 	});
-			// });
-			//console.log(results[1])
+			results[3].sort((a,b)=>{
+				if(a.name.split(" ")[1]<b.name.split(" ")[1]) return -1;
+			});
 			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], timeElapsedString: timeElapsedString });
 		}
 		else{
