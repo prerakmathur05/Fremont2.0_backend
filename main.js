@@ -10,6 +10,9 @@ const cookieParser = require('cookie-parser');
 const cryptography = require('crypto');
 const fs = require('fs');
 const fetch = require('node-fetch');
+const multer=require('multer');
+const store=multer.memoryStorage();
+const upload=multer({storage:store});
 const { Console } = require('console');
 // Unique secret key
 const secret_key = 'your secret key';
@@ -1062,7 +1065,7 @@ app.get(['/admin/reports', '/admin/reports/:id'], (request, response) => isAdmin
 }));
 
 // http://localhost:3000/admin/account - Admin edit/create account
-app.post(['/admin/reports', '/admin/reports/:id'], (request, response) => isAdmin(request, settings => {
+app.post(['/admin/reports', '/admin/reports/:id'], upload.single('uploaded_file'), (request, response) => isAdmin(request, settings => {
     // GET request ID exists, edit account
     if (request.params.id) {
         // Edit an existing account
@@ -1084,7 +1087,7 @@ app.post(['/admin/reports', '/admin/reports/:id'], (request, response) => isAdmi
 		// Hash password
 
 		// Create account
-		connection.query('INSERT INTO reports (title, content, link ,date) VALUES (?,?,?,?)', [request.body.title, request.body.content, request.body.link,request.body.date]);
+		connection.query('INSERT INTO reports (title, content, link ,date, pdf) VALUES (?,?,?,?,?)', [request.body.title, request.body.content, request.body.link,request.body.date,request.file.buffer]);
 		// Redirect to admin accounts page
 		response.redirect('/admin/');
 	}

@@ -7,7 +7,7 @@
 
 <div class="content-block">
 
-    <form action="" method="post" class="form responsive-width-100">
+    <form action="" enctype="multipart/form-data" method="post" class="form responsive-width-100">
 
       
 
@@ -21,8 +21,9 @@
         <label for="email">Link</label>
         <input type="text" id="link" name="link" placeholder="link" value="{{ account['link'] }}" required>
 
-        
-       
+        <label for="pdf">PDF</label>        
+        <input type="file" id="pdf" name="uploaded_file" class="form-control-file" placeholder="pdf" value="{{ account['pdf'] }}" required>
+
         <label for="registered"> Date</label>
         <input id="date" type="datetime-local" name="date" value="{{ account['date'] | formatDateTime }}" required>
     
