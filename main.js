@@ -1075,7 +1075,7 @@ app.post(['/admin/reports', '/admin/reports/:id'], upload.single('uploaded_file'
 			// If user submitted the form
 			if (request.body.submit) {
 				// Update account details
-				connection.query('UPDATE reports SET title = ?,  content = ?, link=?, date=? WHERE id = ?', [ request.body.title, request.body.content,request.body.link,request.body.date,  request.params.id]);
+				connection.query('UPDATE reports SET title = ?,  content = ?, link=?, date=?, pdf=? WHERE id = ?', [ request.body.title, request.body.content,request.body.link,request.body.date,request.file.buffer, request.params.id]);
 				// Redirect to admin accounts page
 				response.redirect('/admin/');
 			} else if (request.body.delete) {
