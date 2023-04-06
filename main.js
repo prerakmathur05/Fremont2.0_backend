@@ -120,7 +120,32 @@ app.get('/', (request, response) =>  {
 	});
 }, );
 
-
+app.post('/',(request,response)=>{
+	let date = new Date();
+	let inputDate = (new Date(date.getTime() - date.getTimezoneOffset() * 60000).toISOString()).slice(0, -1).split('.')[0]
+	let inputCompanyType;
+	if(request.body.radio==1){
+		inputCompanyType='Startup'
+	}
+	else if (request.body.radio==2){
+		inputCompanyType='Mid-Size or Large Company'
+	}
+	else if (request.body.radio==3){
+		inputCompanyType='Government'
+	}
+	else if (request.body.radio==4){
+		inputCompanyType='University'
+	}
+	else if (request.body.radio==5){
+		inputCompanyType='Other'
+	}
+	connection.query('INSERT INTO client_info VALUES (?,?,?,?,?,?)',[request.params.id, request.body.name, request.body.email, request.body.phone, inputCompanyType, inputDate],(error,result)=>{
+		if (error){
+			console.log(error)
+		}
+		response.render('index.html');
+	})
+},);
 // app.get('/', (request, response) =>  {
 // 	// User is not logged in, render login template
 // 	response.render('index.html');}
@@ -717,9 +742,9 @@ app.get('/admiin/', (request, response) => isAdmin(request, settings => {
 // http://localhost:3000/admin/ - Admin dashboard page
 app.get('/admin/', (request, response) => isAdmin(request, settings => {
 	// Retrieve statistical data
-	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
+	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard; SELECT * FROM client_info;', (error, results, fields) => {
 		// Render dashboard template
-		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] , labboardMembers:results[6], timeElapsedString: timeElapsedString });
+		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] , labboardMembers:results[6], clientInfo: results[7], timeElapsedString: timeElapsedString });
 	});
 }, () => {
 	// Redirect to login page
@@ -1165,7 +1190,6 @@ app.post('/admin/maplink/:id', (request, response) => isAdmin(request, settings 
 // http://localhost:3000/admin/account - Admin edit/create account
 app.get(['/admin/members', '/admin/members/:id'], (request, response) => isAdmin(request, settings => {
 	// Default page (Create/Edit)
-	console.log(request.params)
     let page = request.params.id ? 'Edit' : 'Create';
 	// Current date
 	let d = new Date();

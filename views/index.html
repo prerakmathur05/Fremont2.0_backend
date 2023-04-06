@@ -59,7 +59,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
 
 
 
@@ -178,10 +178,15 @@
             }
         }
         changeHeight(smallDevice);
+        function downloadPDF(){
+            var doc=new jspdf.jsPDF();
+            doc.html(document.getElementById('the__table').innerHTML);
+            doc.save("a4.pdf");
+        }
     </script>
 </head>
 
-<body id="top" onload="init(); changeHeight(smallDevice)">
+<body id="top" onload="init(); changeHeight(smallDevice);">
 
     <!-- header
     ================================================== -->
@@ -294,10 +299,11 @@
             <h2 style="margin-top: 0;">Proximity Lab Board </h2>
         </div>
         </div>
-        <div class="row services-list block-1-2 block-tab-full">
+        <div class="row rowAboutUs services-list block-1-2 block-tab-full"> 
             {% if labboard %}
+            {% for labmember in labboard %}
             <div class="col-block service-item" data-aos="fade-up">
-                {% for labmember in labboard %}
+                
                 <div class="service-icon">
 
                     <i class="fa-solid fa-circle-user"></i>
@@ -305,15 +311,31 @@
                 </div>
                 <div class="service-text">
                     <h3 class="h2">{{labmember.name}}</h3>
-                    <p>{{labmember.position}}, Proximity Lab <br>
+                    <p>{{labmember.position}}<br>
                         <!-- <a href="mailto:{{labmember.email}}">
                             {{labmember.email}}
                         </a> -->
                     </p>
                 </div>
-                {% endfor %}
+                
+                <!-- {% for labmember in labboard %}
+                <div class="service-icon">
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                </div>
+                <div class="service-text">
+                    <h3 class="h2">{{labmember.name}}</h3>
+                    <p>{{labmember.position}}<br>
+                        <!-- <a href="mailto:{{labmember.email}}">
+                            {{labmember.email}}
+                        </a> -->
+                    <!-- </p>
+                </div>
+                {% endfor %} -->
                 
             </div>
+            {% endfor %}
             {% endif %}
             <!-- <div class="col-block service-item" data-aos="fade-up">
 
@@ -3283,24 +3305,50 @@ est. Maiores voluptas ab sit natus veritatis ut. <br/>
                     </span>
                 </h5>
                 <br />
-                <div class="inputWrapper">
-                    <label for="name">NAME</label>
-                    <input name="name" type="string" id="name" required />
-                </div>
-                <div class="inputWrapper">
-                    <label for="Email">EMAIL</label>
-                    <input name="email" type="string" id="email" required />
-                </div>
-                <div class="inputWrapper">
-                    <label for="Phone">PHONE</label>
-                    <input name="phone" type="string" id="phone" required />
-                </div>
-
+                <form action="" method="POST" id="form__2">
+                    <div class="inputWrapper">
+                        <label for="name">NAME</label>
+                        <input name="name" type="string" id="name" required />
+                    </div>
+                    <div class="inputWrapper">
+                        <label for="Email">EMAIL</label>
+                        <input name="email" type="string" id="email" required />
+                    </div>
+                    <div class="inputWrapper">
+                        <label for="Phone">PHONE</label>
+                        <input name="phone" type="string" id="phone" required />
+                    </div>
+                    <div class="business-btns">
+                        <div class="btngrouping">
+                            <input class ="contact__radio__input" type="radio" id="startUpId" name="radio"  value = "1">
+                            <br /><label for="startUp" class="businessType" >STARTUP</label>
+                        </div>
+                        <div class="btngrouping">
+                            <input class ="contact__radio__input" type="radio" id="midSizeId" name="radio" value = "2">
+                            <br /><label for="midSizeBusiness" class="businessType" >MID-SIZE
+                                OR LARGE   COMPANY</label>
+                        </div>  
+                        <br/>
+                        <div class="btngrouping">
+                            <input class ="contact__radio__input" type="radio" id="conpanyId" name="radio" value = "3">
+                            <br /><label for="government" class="businessType" >GOVERNMENT</label>
+                        </div>
+                        <div class="btngrouping">
+                            <input class ="contact__radio__input" type="radio" id="startUpId2" name="radio" value = "4">
+                            <br /><label for="university" class="businessType" >UNIVERSITY</label>
+                        </div>
+                        <div class="btngrouping">
+                            <input class ="contact__radio__input" type="radio" id="startUpId3" name="radio" value = "5">
+                            <br /><label for="other" class="businessType" >OTHER</label>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" class="submit_btn" value="Submit" id="submit__form__2" onclick="executeAlertThree()">
+                </form>
                 <br />
-                <form action="POST" name="form__2">
+                <!-- <form action="POST" name="form__2"> -->
 
                 
-                <div class="business-btns">
+                <!-- <div class="business-btns">
                     <div class="btngrouping">
                         <input class ="contact__radio__input" type="radio" id="startUpId" name="radio"  value = "1">
                         <br /><label for="startUp" class="businessType" >STARTUP</label>
@@ -3310,7 +3358,7 @@ est. Maiores voluptas ab sit natus veritatis ut. <br/>
                         <br /><label for="midSizeBusiness" class="businessType" >MID-SIZE
                             OR LARGE   COMPANY</label>
                     </div>  
-
+                    <br/>
                     <div class="btngrouping">
                         <input class ="contact__radio__input" type="radio" id="conpanyId" name="radio" value = "3">
                         <br /><label for="government" class="businessType" >GOVERNMENT</label>
@@ -3323,9 +3371,9 @@ est. Maiores voluptas ab sit natus veritatis ut. <br/>
                         <input class ="contact__radio__input" type="radio" id="startUpId3" name="radio" value = "5">
                         <br /><label for="other" class="businessType" >OTHER</label>
                     </div>
-                </div>
+                </div> -->
 
-            </form>
+            <!-- </form> -->
                 <script>
                     var rad = document.form__2.radio;
                     var prev = null;    
@@ -3339,7 +3387,7 @@ est. Maiores voluptas ab sit natus veritatis ut. <br/>
                     }
                 </script>
                 <br />
-                <input type="button" class="submit_btn" value="submit" id="submit__form__2" onclick="executeAlertThree()"></input>
+                <!-- <input type="button" class="submit_btn" value="submit" id="submit__form__2" onclick="executeAlertThree()"></input> -->
             </div>
         </div>
     </section>
