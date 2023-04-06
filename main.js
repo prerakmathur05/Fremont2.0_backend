@@ -143,7 +143,7 @@ app.post('/',(request,response)=>{
 		if (error){
 			console.log(error)
 		}
-		response.render('index.html');
+		response.redirect('/');
 	})
 },);
 // app.get('/', (request, response) =>  {
@@ -751,6 +751,12 @@ app.get('/admin/', (request, response) => isAdmin(request, settings => {
 	response.redirect('/');
 }));
 
+app.get('/admin/clientInfo/delete/:id',(request,response)=>isAdmin(request, settings=>{
+	if (request.params.id) {
+		connection.query('DELETE FROM client_info WHERE id = ?', [request.params.id]);
+		response.redirect('/admin/');
+	}
+},()=>{response.redirect('/');}))
 // http://localhost:3000/admin/accounts - Admin accounts page
 app.get(['/admin/accounts', '/admin/accounts/:msg/:search/:status/:activation/:role/:order/:order_by/:page'], (request, response) => isAdmin(request, settings => {
 	// Params validation
