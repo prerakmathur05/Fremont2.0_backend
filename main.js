@@ -717,9 +717,9 @@ app.get('/admiin/', (request, response) => isAdmin(request, settings => {
 // http://localhost:3000/admin/ - Admin dashboard page
 app.get('/admin/', (request, response) => isAdmin(request, settings => {
 	// Retrieve statistical data
-	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map;', (error, results, fields) => {
+	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
 		// Render dashboard template
-		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] ,timeElapsedString: timeElapsedString });
+		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] , labboardMembers:results[6], timeElapsedString: timeElapsedString });
 	});
 }, () => {
 	// Redirect to login page
@@ -1161,6 +1161,77 @@ app.post('/admin/maplink/:id', (request, response) => isAdmin(request, settings 
 }));
 
 
+//labboardMembers
+// http://localhost:3000/admin/account - Admin edit/create account
+app.get(['/admin/members', '/admin/members/:id'], (request, response) => isAdmin(request, settings => {
+	// Default page (Create/Edit)
+	console.log(request.params)
+    let page = request.params.id ? 'Edit' : 'Create';
+	// Current date
+	let d = new Date();
+    // Default input account values
+    let member = {
+		'name':'',
+		'position':'',
+        'date': (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1).split('.')[0],
+
+    };
+
+    // GET request ID exists, edit account
+    if (request.params.id) {
+		connection.query('SELECT * FROM labboard WHERE id = ?', [request.params.id], (error, accounts) => {
+			news = accounts[0];
+			response.render('admin/members.html', { selected: 'accounts', selectedChild: 'manage', page: page, account: news });
+		});
+	} else {
+		response.render('admin/members.html', { selected: 'accounts', selectedChild: 'manage', page: page, account: member });
+	}
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
+
+app.post(['/admin/members', '/admin/members/:id'], (request, response) => isAdmin(request, settings => {
+    // GET request ID exists, edit account
+    if (request.params.id) {
+        // Edit an existing account
+        page = 'Edit'
+        // Retrieve account by ID with the GET request ID
+		connection.query('SELECT * FROM labboard WHERE id = ?', [request.params.id], (error, accounts) => {
+			// If user submitted the form
+			if (request.body.submit) {
+				// Update account details
+				connection.query('UPDATE labboard SET Name = ?,  position = ?, email=? WHERE id = ?', [ request.body.name, request.body.position,request.body.email, request.params.id]);
+				// Redirect to admin accounts page
+				response.redirect('/admin/');
+			} else if (request.body.delete) {
+				// delete account
+				response.redirect('/admin/members/delete/' + request.params.id);
+			}
+		});
+	} else if (request.body.submit) {
+		// Hash password
+
+		// Create account
+		connection.query('INSERT INTO labboard (name, position, email) VALUES (?,?,?)', [request.body.name, request.body.position, request.body.email]);
+		// Redirect to admin accounts page
+		response.redirect('/admin/');
+	}
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
+// http://localhost:3000/admin/account/delete/:id - Delete account based on the ID param
+app.get('/admin/members/delete/:id', (request, response) => isAdmin(request, settings => {
+    // GET request ID exists, delete account
+    if (request.params.id) {
+		connection.query('DELETE FROM labboard WHERE id = ?', [request.params.id]);
+		response.redirect('/admin/');
+	}
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
 
 
 // http://localhost:3000/admin/roles - View accounts roles

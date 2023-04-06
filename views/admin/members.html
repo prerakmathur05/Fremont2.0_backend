@@ -1,0 +1,34 @@
+{% extends 'admin/layout.html' %}
+
+{% block title %}{{ page }} Account{% endblock %}
+
+{% block content %}
+<h2>{{ page }} Reports</h2>
+
+<div class="content-block">
+
+    <form action=""  method="post" class="form responsive-width-100">
+
+      
+
+        
+        <label for="Name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Name" value="{{ account['name'] }}" required>
+
+        <label for="position">Position</label>
+        <input type="text" id="position" name="position" placeholder="Position" value="{{ account['position'] }}" required>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="email" value="{{ account['email'] }}" required>
+    
+        <div class="submit-btns">
+            <input type="submit" name="submit" value="Submit">
+            {% if page == 'Edit' %}
+            <input type="submit" name="delete" value="Delete" class="delete" onclick="return confirm('Are you sure you want to delete this account?')">
+            {% endif %}
+        </div>
+
+    </form>
+
+</div>
+{% endblock %}
