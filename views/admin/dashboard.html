@@ -262,6 +262,44 @@
     {% endif %}
 </div>
 
+<h2 style="padding-top:20px ;">Events</h2>
+<div class="content-block">
+    {% if events %}
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td class="responsive-hidden">#</td> 
+                    <td class="responsive-hidden">Event</td>
+                    <td class="responsive-hidden">Info</td>
+                    <td>
+                        <a href="/admin/members/">ADD</a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if events.length == 0 %}
+                <tr>
+                    <td colspan="3" style="text-align:center;">There are no active reports</td>
+                </tr>
+                {% endif %}
+                {% for event in events %}
+                <tr>
+                    <td class="responsive-hidden" style="overflow: hidden; ">{{ event['id']}}</td>
+                    <td class="responsive-hidden" style="overflow: hidden; ">{{ event['title']}}</td>
+                    <td class="responsive-hidden" style="overflow: hidden; ">{{ event['event'].slice(0,50) + " ..." }}</td>
+                    <td>
+                        <a href="/admin/events/{{ event['id'] }}">Edit</a>
+                        <a href="/admin/events/delete/{{ event['id'] }}" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+
 
 <h2 style="padding-top:20px ;">Client Information</h2>
 <div class="content-block">
@@ -275,9 +313,7 @@
                     <td class="responsive-hidden">Email</td>
                     <td class="responsive-hidden">Phone</td>
                     <td class="responsive-hidden">Client Type</td>
-                    <!-- <td>
-                        <a href="/admin/members/">ADD</a>
-                    </td> -->
+                    <td class="responsive-hidden">ADD</td>
                 </tr>
             </thead>
             <tbody>
@@ -293,10 +329,10 @@
                     <td class="responsive-hidden" style="overflow: hidden; ">{{ client['email'] }}</td>
                     <td class="responsive-hidden" style="overflow: hidden; ">{{ client['phone'] }}</td>
                     <td class="responsive-hidden" style="overflow: hidden; ">{{ client['client_type'] }}</td>
-                    <!-- <td>
-                        <a href="/admin/members/{{ member['id'] }}">Edit</a>
-                        <a href="/admin/members/delete/{{ member['id'] }}" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
-                    </td> -->
+                    <td>
+                        <!-- <a href="/admin/members/{{ member['id'] }}">Edit</a> -->
+                        <a href="/admin/clientInfo/delete/{{ client['id'] }}" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

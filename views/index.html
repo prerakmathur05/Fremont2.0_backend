@@ -3247,7 +3247,17 @@
                     <h2 class="blue">Events</h2>
 
                     <div class="cinfo">
-                        <h3>Next event</h3>
+                        {% if events %}
+                            {% for event in events%}
+                            <h3>{{event.title}}</h3>
+                            <p>{{event.event}}</p>
+                            <a href="#contact">
+    
+                                <button type="submit" class="info-button"> More Info </button>
+                            </a>
+                            {% endfor %}
+                        {% endif %}
+                        <!-- <h3>Next event</h3>
                         <p>
                             30 September 2022, Microclimates of Innovation
                             in the SF Biomedical Industry.
@@ -3256,7 +3266,7 @@
                         <a href="#contact">
 
                             <button type="submit" class="info-button"> More Info </button>
-                        </a>
+                        </a> -->
 
                     </div>
 
@@ -3316,7 +3326,7 @@ est. Maiores voluptas ab sit natus veritatis ut. <br/>
                     </div>
                     <div class="inputWrapper">
                         <label for="Phone">PHONE</label>
-                        <input name="phone" type="string" id="phone" required />
+                        <input name="phone" type="string" id="phone" pattern="\d*" maxlength="10" required />
                     </div>
                     <div class="business-btns">
                         <div class="btngrouping">

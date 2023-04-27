@@ -90,7 +90,7 @@ app.use(cookieParser());
 
 app.get('/', (request, response) =>  {
 	// Retrieve statistical data
-	connection.query(' SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard;', (error, results, fields) => {
+	connection.query(' SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard; SELECT * from events', (error, results, fields) => {
 		// Render dashboard template
 		if (results) {
 			let title;
@@ -111,7 +111,7 @@ app.get('/', (request, response) =>  {
 			results[3].sort((a,b)=>{
 				if(a.name.split(" ")[1]<b.name.split(" ")[1]) return -1;
 			});
-			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], timeElapsedString: timeElapsedString });
+			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], events: results[4], timeElapsedString: timeElapsedString });
 		}
 		else{
 			response.render('index.html')
@@ -742,9 +742,9 @@ app.get('/admiin/', (request, response) => isAdmin(request, settings => {
 // http://localhost:3000/admin/ - Admin dashboard page
 app.get('/admin/', (request, response) => isAdmin(request, settings => {
 	// Retrieve statistical data
-	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard; SELECT * FROM client_info;', (error, results, fields) => {
+	connection.query('SELECT * FROM subscribers WHERE cast(date as DATE) = cast(now() as DATE) ORDER BY date DESC; SELECT COUNT(*) AS total FROM subscribers LIMIT 1; SELECT * FROM subscribers; SELECT * FROM news; SELECT * FROM reports; SELECT * FROM map; SELECT * FROM labboard; SELECT * FROM client_info; SELECT * from events;', (error, results, fields) => {
 		// Render dashboard template
-		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] , labboardMembers:results[6], clientInfo: results[7], timeElapsedString: timeElapsedString });
+		response.render('admin/dashboard.html', { selected: 'dashboard', accounts: results[0], accounts_total: results[1][0],all_accounts:results[2], news:results[3], reports:results[4], mapLink:results[5][0] , labboardMembers:results[6], clientInfo: results[7], events:results[8], timeElapsedString: timeElapsedString });
 	});
 }, () => {
 	// Redirect to login page
@@ -1186,6 +1186,78 @@ app.post('/admin/maplink/:id', (request, response) => isAdmin(request, settings 
 			} 
 		});
 	} 
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
+
+
+//events
+// http://localhost:3000/admin/account - Admin edit/create account
+app.get(['/admin/events', '/admin/events/:id'], (request, response) => isAdmin(request, settings => {
+	// Default page (Create/Edit)
+    let page = request.params.id ? 'Edit' : 'Create';
+	// Current date
+	let d = new Date();
+    // Default input account values
+    let event = {
+		'name':'',
+		'info':'',
+        'date': (new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString()).slice(0, -1).split('.')[0],
+
+    };
+
+    // GET request ID exists, edit account
+    if (request.params.id) {
+		connection.query('SELECT * FROM events WHERE id = ?', [request.params.id], (error, accounts) => {
+			news = accounts[0];
+			response.render('admin/events.html', { selected: 'accounts', selectedChild: 'manage', page: page, account: news });
+		});
+	} else {
+		response.render('admin/events.html', { selected: 'accounts', selectedChild: 'manage', page: page, account: event });
+	}
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
+
+app.post(['/admin/events', '/admin/events/:id'], (request, response) => isAdmin(request, settings => {
+    // GET request ID exists, edit account
+    if (request.params.id) {
+        // Edit an existing account
+        page = 'Edit'
+        // Retrieve account by ID with the GET request ID
+		connection.query('SELECT * FROM events WHERE id = ?', [request.params.id], (error, accounts) => {
+			// If user submitted the form
+			if (request.body.submit) {
+				// Update account details
+				connection.query('UPDATE events SET title = ?,  event = ? WHERE id = ?', [ request.body.title, request.body.event,request.params.id]);
+				// Redirect to admin accounts page
+				response.redirect('/admin/');
+			} else if (request.body.delete) {
+				// delete account
+				response.redirect('/admin/events/delete/' + request.params.id);
+			}
+		});
+	} else if (request.body.submit) {
+		// Hash password
+
+		// Create account
+		connection.query('INSERT INTO events (title, event) VALUES (?,?)', [request.body.title, request.body.event]);
+		// Redirect to admin accounts page
+		response.redirect('/admin/');
+	}
+}, () => {
+	// Redirect to login page
+	response.redirect('/');
+}));
+// http://localhost:3000/admin/account/delete/:id - Delete account based on the ID param
+app.get('/admin/events/delete/:id', (request, response) => isAdmin(request, settings => {
+    // GET request ID exists, delete account
+    if (request.params.id) {
+		connection.query('DELETE FROM events WHERE id = ?', [request.params.id]);
+		response.redirect('/admin/');
+	}
 }, () => {
 	// Redirect to login page
 	response.redirect('/');
