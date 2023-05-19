@@ -129,7 +129,7 @@ function calculate() {
 
   var productCost = document.getElementsByName("productPrice");
   for (var i = 0; i < productCost.length; i++) {
-    productCost[i].innerHTML = "$" + productPrice;
+    productCost[i].innerHTML = "$" + productPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   // var unitCost= document.getElementsByName("unitCost")
   // for (var i=0;i<unitCost.length;i++){
@@ -137,17 +137,17 @@ function calculate() {
   // }
   var materialCostName = document.getElementsByName("materialCost");
   for (var i = 0; i < materialCostName.length; i++) {
-    materialCostName[i].innerHTML = "$" + materialCost;
+    materialCostName[i].innerHTML = "$" + materialCost.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   var directLaborName = document.getElementsByName("directLaborhrs");
   for (var i = 0; i < directLaborName.length; i++) {
-    directLaborName[i].innerHTML = directLabor;
+    directLaborName[i].innerHTML = directLabor.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   const materialOverhead = materialCost * 0.03;
   var materialOverheadArray = document.getElementsByName("materialOverhead");
   for (var i = 0; i < materialOverheadArray.length; i++) {
-    materialOverheadArray[i].innerHTML = "$" + materialOverhead.toFixed(2);
+    materialOverheadArray[i].innerHTML = "$" + materialOverhead.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   var unitsPerYearName = document.getElementsByName("unitsPerYear");
@@ -161,11 +161,11 @@ function calculate() {
   const lcCHCH = (10 * directLabor).toFixed(2);
   const lcMECA = (15 * directLabor).toFixed(2);
 
-  document.getElementById("lcCACA").innerHTML = "$" + lcCACA;
-  document.getElementById("lcCHCA").innerHTML = "$" + lcCHCA;
-  document.getElementById("lcCACH").innerHTML = "$" + lcCACH;
-  document.getElementById("lcCHCH").innerHTML = "$" + lcCHCH;
-  document.getElementById("lcMECA").innerHTML = "$" + lcMECA;
+  document.getElementById("lcCACA").innerHTML = "$" + lcCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("lcCHCA").innerHTML = "$" + lcCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("lcCACH").innerHTML = "$" + lcCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("lcCHCH").innerHTML = "$" + lcCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("lcMECA").innerHTML = "$" + lcMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for duty charge
   const dutyChargeCACA = (productPrice * 0).toFixed(2);
@@ -174,11 +174,11 @@ function calculate() {
   const dutyChargeCHCH = (productPrice * 0).toFixed(2);
   const dutyChargeMECA = (productPrice * 0.03).toFixed(2);
 
-  document.getElementById("dutyChargeCACA").innerHTML = "$" + dutyChargeCACA;
-  document.getElementById("dutyChargeCHCA").innerHTML = "$" + dutyChargeCHCA;
-  document.getElementById("dutyChargeCACH").innerHTML = "$" + dutyChargeCACH;
-  document.getElementById("dutyChargeCHCH").innerHTML = "$" + dutyChargeCHCH;
-  document.getElementById("dutyChargeMECA").innerHTML = "$" + dutyChargeMECA;
+  document.getElementById("dutyChargeCACA").innerHTML = "$" + dutyChargeCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("dutyChargeCHCA").innerHTML = "$" + dutyChargeCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("dutyChargeCACH").innerHTML = "$" + dutyChargeCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("dutyChargeCHCH").innerHTML = "$" + dutyChargeCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("dutyChargeMECA").innerHTML = "$" + dutyChargeMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for custom fees
   const customFeesCACA = (productPrice * 0).toFixed(2);
@@ -186,11 +186,11 @@ function calculate() {
   const customFeesCACH = (productPrice * 0.0339).toFixed(2);
   const customFeesCHCH = (productPrice * 0).toFixed(2);
   const customFeesMECA = (productPrice * 0.0159).toFixed(2);
-  document.getElementById("customFeesCACA").innerHTML = "$" + customFeesCACA;
-  document.getElementById("customFeesCHCA").innerHTML = "$" + customFeesCHCA;
-  document.getElementById("customFeesCACH").innerHTML = "$" + customFeesCACH;
-  document.getElementById("customFeesCHCH").innerHTML = "$" + customFeesCHCH;
-  document.getElementById("customFeesMECA").innerHTML = "$" + customFeesMECA;
+  document.getElementById("customFeesCACA").innerHTML = "$" + customFeesCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("customFeesCHCA").innerHTML = "$" + customFeesCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("customFeesCACH").innerHTML = "$" + customFeesCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("customFeesCHCH").innerHTML = "$" + customFeesCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("customFeesMECA").innerHTML = "$" + customFeesMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //unit weight
   var weightArray = document.getElementsByName("unitWeight");
@@ -201,14 +201,14 @@ function calculate() {
   //Ocean Freight Cost
   const ofcCHCA = (unitWeight * 24).toFixed(2);
   const ofcCACH = (unitWeight * 24).toFixed(2);
-  document.getElementById("ofcCHCA").innerHTML = "$" + ofcCHCA;
-  document.getElementById("ofcCACH").innerHTML = "$" + ofcCACH;
+  document.getElementById("ofcCHCA").innerHTML = "$" + ofcCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ofcCACH").innerHTML = "$" + ofcCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //port to customer cost
   const pocCHCA = (unitWeight * 12).toFixed(2);
   const pocCACH = (unitWeight * 8).toFixed(2);
-  document.getElementById("pocCHCA").innerHTML = "$" + pocCHCA;
-  document.getElementById("pocCACH").innerHTML = "$" + pocCACH;
+  document.getElementById("pocCHCA").innerHTML = "$" + pocCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("pocCACH").innerHTML = "$" + pocCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for Factory to Customer cost
   const focCACA = (unitWeight * 12).toFixed(2);
@@ -216,11 +216,11 @@ function calculate() {
   const focMECA = (unitWeight * 11).toFixed(2);
   const focCHCA = 0;
   const focCACH = 0;
-  document.getElementById("focCACA").innerHTML = "$" + focCACA;
+  document.getElementById("focCACA").innerHTML = "$" + focCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   //document.getElementById("focCHCA").innerHTML= "$" + (unitWeight * 12).toFixed(2)  missing from sheet
   //document.getElementById("focCACH").innerHTML= "$" + (unitWeight * 12).toFixed(2)  missing from sheet
-  document.getElementById("focCHCH").innerHTML = "$" + focCHCH;
-  document.getElementById("focMECA").innerHTML = "$" + focMECA;
+  document.getElementById("focCHCH").innerHTML = "$" + focCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("focMECA").innerHTML = "$" + focMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Shipping insurance
   const siCACA = (productPrice * 0.01).toFixed(2);
@@ -228,11 +228,11 @@ function calculate() {
   const siCACH = (productPrice * 0.05).toFixed(2);
   const siCHCH = (productPrice * 0.01).toFixed(2);
   const siMECA = (productPrice * 0.05).toFixed(2);
-  document.getElementById("siCACA").innerHTML = "$" + siCACA;
-  document.getElementById("siCHCA").innerHTML = "$" + siCHCA;
-  document.getElementById("siCACH").innerHTML = "$" + siCACH;
-  document.getElementById("siCHCH").innerHTML = "$" + siCHCH;
-  document.getElementById("siMECA").innerHTML = "$" + siMECA;
+  document.getElementById("siCACA").innerHTML = "$" + siCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("siCHCA").innerHTML = "$" + siCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("siCACH").innerHTML = "$" + siCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("siCHCH").innerHTML = "$" + siCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("siMECA").innerHTML = "$" + siMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for Shipping Cost
   /*Note there are shipping cost constants---Logistics costs
@@ -301,27 +301,27 @@ Labor for packing */
 
   //for Cumulative Product + shipping cost
   document.getElementById("cpstCACA").innerHTML =
-    "$" + cumulativeProductCACA.toFixed(2);
+    "$" + cumulativeProductCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstCHCA").innerHTML =
-    "$" + cumulativeProductCHCA.toFixed(2);
+    "$" + cumulativeProductCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstCACH").innerHTML =
-    "$" + cumulativeProductCACH.toFixed(2);
+    "$" + cumulativeProductCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstCHCH").innerHTML =
-    "$" + cumulativeProductCHCH.toFixed(2);
+    "$" + cumulativeProductCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstMECA").innerHTML =
-    "$" + cumulativeProductMECA.toFixed(2);
+    "$" + cumulativeProductMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for Cumulative Product + shipping cost for total units per year
   document.getElementById("cpstpyCACA").innerHTML =
-    "$" + (cumulativeProductCACA * unitPerYear).toFixed(2);
+    "$" + (cumulativeProductCACA * unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstpyCHCA").innerHTML =
-    "$" + (cumulativeProductCHCA * unitPerYear).toFixed(2);
+    "$" + (cumulativeProductCHCA * unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstpyCACH").innerHTML =
-    "$" + (cumulativeProductCACH * unitPerYear).toFixed(2);
+    "$" + (cumulativeProductCACH * unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstpyCHCH").innerHTML =
-    "$" + (cumulativeProductCHCH * unitPerYear).toFixed(2);
+    "$" + (cumulativeProductCHCH * unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpstpyMECA").innerHTML =
-    "$" + (cumulativeProductMECA * unitPerYear).toFixed(2);
+    "$" + (cumulativeProductMECA * unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //for wage inflation calculations
   const wiCACA = (0.167 * lcCACA).toFixed(2);
@@ -329,23 +329,23 @@ Labor for packing */
   const wiCACH = (0.167 * lcCACH).toFixed(2);
   const wiCHCH = (0.504 * lcCHCH).toFixed(2);
   const wiMECA = (0.309 * lcMECA).toFixed(2);
-  document.getElementById("wiCACA").innerHTML = "$" + wiCACA;
-  document.getElementById("wiCHCA").innerHTML = "$" + wiCHCA;
-  document.getElementById("wiCACH").innerHTML = "$" + wiCACH;
-  document.getElementById("wiCHCH").innerHTML = "$" + wiCHCH;
-  document.getElementById("wiMECA").innerHTML = "$" + wiMECA;
+  document.getElementById("wiCACA").innerHTML = "$" + wiCACA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("wiCHCA").innerHTML = "$" + wiCHCA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("wiCACH").innerHTML = "$" + wiCACH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("wiCHCH").innerHTML = "$" + wiCHCH.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("wiMECA").innerHTML = "$" + wiMECA.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Cumulative Product + Shipping 5 Year Forecast per unit
   document.getElementById("cpst5yCACA").innerHTML =
-    "$" + (eval(wiCACA) + eval(cumulativeProductCACA)).toFixed(2);
+    "$" + (eval(wiCACA) + eval(cumulativeProductCACA)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpst5yCHCA").innerHTML =
-    "$" + (eval(wiCACA) + eval(cumulativeProductCHCA)).toFixed(2);
+    "$" + (eval(wiCACA) + eval(cumulativeProductCHCA)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpst5yCACH").innerHTML =
-    "$" + (eval(wiCACA) + eval(cumulativeProductCACH)).toFixed(2);
+    "$" + (eval(wiCACA) + eval(cumulativeProductCACH)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpst5yCHCH").innerHTML =
-    "$" + (eval(wiCACA) + eval(cumulativeProductCHCH)).toFixed(2);
+    "$" + (eval(wiCACA) + eval(cumulativeProductCHCH)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("cpst5yMECA").innerHTML =
-    "$" + (eval(wiCACA) + eval(cumulativeProductMECA)).toFixed(2);
+    "$" + (eval(wiCACA) + eval(cumulativeProductMECA)).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Tooling Cost
   const toolingCostCACA = 20000;
@@ -354,26 +354,26 @@ Labor for packing */
   const toolingCostCHCH = 5000;
   const toolingCostMECA = 5000;
   document.getElementById("toolingCostCACA").innerHTML =
-    "$" + toolingCostCACA.toFixed(2);
+    "$" + toolingCostCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostCHCA").innerHTML =
-    "$" + toolingCostCHCA.toFixed(2);
+    "$" + toolingCostCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostCACH").innerHTML =
-    "$" + toolingCostCACH.toFixed(2);
+    "$" + toolingCostCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostCHCH").innerHTML =
-    "$" + toolingCostCHCH.toFixed(2);
+    "$" + toolingCostCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostMECA").innerHTML =
-    "$" + toolingCostMECA.toFixed(2);
+    "$" + toolingCostMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   document.getElementById("toolingCostPUCACA").innerHTML =
-    "$" + (toolingCostCACA / unitPerYear).toFixed(2);
+    "$" + (toolingCostCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostPUCHCA").innerHTML =
-    "$" + (toolingCostCHCA / unitPerYear).toFixed(2);
+    "$" + (toolingCostCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostPUCACH").innerHTML =
-    "$" + (toolingCostCACH / unitPerYear).toFixed(2);
+    "$" + (toolingCostCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostPUCHCH").innerHTML =
-    "$" + (toolingCostCHCH / unitPerYear).toFixed(2);
+    "$" + (toolingCostCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("toolingCostPUMECA").innerHTML =
-    "$" + (toolingCostMECA / unitPerYear).toFixed(2);
+    "$" + (toolingCostMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Deployment cost
   const tdcCACA = 11800;
@@ -381,22 +381,22 @@ Labor for packing */
   const tdcCACH = 12000;
   const tdcCHCH = 3200;
   const tdcMECA = 7700;
-  document.getElementById("tdcCACA").innerHTML = "$" + tdcCACA.toFixed(2);
-  document.getElementById("tdcCHCA").innerHTML = "$" + tdcCHCA.toFixed(2);
-  document.getElementById("tdcCACH").innerHTML = "$" + tdcCACH.toFixed(2);
-  document.getElementById("tdcCHCH").innerHTML = "$" + tdcCHCH.toFixed(2);
-  document.getElementById("tdcMECA").innerHTML = "$" + tdcMECA.toFixed(2);
+  document.getElementById("tdcCACA").innerHTML = "$" + tdcCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tdcCHCA").innerHTML = "$" + tdcCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tdcCACH").innerHTML = "$" + tdcCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tdcCHCH").innerHTML = "$" + tdcCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tdcMECA").innerHTML = "$" + tdcMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   document.getElementById("tdcPUCACA").innerHTML =
-    "$" + (tdcCACA / unitPerYear).toFixed(2);
+    "$" + (tdcCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tdcPUCHCA").innerHTML =
-    "$" + (tdcCHCA / unitPerYear).toFixed(2);
+    "$" + (tdcCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tdcPUCACH").innerHTML =
-    "$" + (tdcCACH / unitPerYear).toFixed(2);
+    "$" + (tdcCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tdcPUCHCH").innerHTML =
-    "$" + (tdcCHCH / unitPerYear).toFixed(2);
+    "$" + (tdcCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tdcPUMECA").innerHTML =
-    "$" + (tdcMECA / unitPerYear).toFixed(2);
+    "$" + (tdcMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Quality Cost
   const qualityCostCACA = 5600;
@@ -405,26 +405,26 @@ Labor for packing */
   const qualityCostCHCH = 2000;
   const qualityCostMECA = 4600;
   document.getElementById("qualityCostCACA").innerHTML =
-    "$" + qualityCostCACA.toFixed(2);
+    "$" + qualityCostCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostCHCA").innerHTML =
-    "$" + qualityCostCHCA.toFixed(2);
+    "$" + qualityCostCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostCACH").innerHTML =
-    "$" + qualityCostCACH.toFixed(2);
+    "$" + qualityCostCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostCHCH").innerHTML =
-    "$" + qualityCostCHCH.toFixed(2);
+    "$" + qualityCostCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostMECA").innerHTML =
-    "$" + qualityCostMECA.toFixed(2);
+    "$" + qualityCostMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   document.getElementById("qualityCostPUCACA").innerHTML =
-    "$" + (qualityCostCACA / unitPerYear).toFixed(2);
+    "$" + (qualityCostCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostPUCHCA").innerHTML =
-    "$" + (qualityCostCHCA / unitPerYear).toFixed(2);
+    "$" + (qualityCostCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostPUCACH").innerHTML =
-    "$" + (qualityCostCACH / unitPerYear).toFixed(2);
+    "$" + (qualityCostCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostPUCHCH").innerHTML =
-    "$" + (qualityCostCHCH / unitPerYear).toFixed(2);
+    "$" + (qualityCostCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("qualityCostPUMECA").innerHTML =
-    "$" + (qualityCostMECA / unitPerYear).toFixed(2);
+    "$" + (qualityCostMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //packaging cost
 
@@ -435,11 +435,11 @@ Labor for packing */
   const ppuCHCH = 100;
   const ppuMECA = 100;
 
-  document.getElementById("ppuCACA").innerHTML = "$" + ppuCACA.toFixed(2);
-  document.getElementById("ppuCHCA").innerHTML = "$" + ppuCHCA.toFixed(2);
-  document.getElementById("ppuCACH").innerHTML = "$" + ppuCACH.toFixed(2);
-  document.getElementById("ppuCHCH").innerHTML = "$" + ppuCHCH.toFixed(2);
-  document.getElementById("ppuMECA").innerHTML = "$" + ppuMECA.toFixed(2);
+  document.getElementById("ppuCACA").innerHTML = "$" + ppuCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ppuCHCA").innerHTML = "$" + ppuCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ppuCACH").innerHTML = "$" + ppuCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ppuCHCH").innerHTML = "$" + ppuCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ppuMECA").innerHTML = "$" + ppuMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Packaging transportation costs (if necessary)
   const ptcCACA = 0;
@@ -448,11 +448,11 @@ Labor for packing */
   const ptcCHCH = 2995;
   const ptcMECA = 1720;
 
-  document.getElementById("ptcCACA").innerHTML = "$" + ptcCACA.toFixed(2);
-  document.getElementById("ptcCHCA").innerHTML = "$" + ptcCHCA.toFixed(2);
-  document.getElementById("ptcCACH").innerHTML = "$" + ptcCACH.toFixed(2);
-  document.getElementById("ptcCHCH").innerHTML = "$" + ptcCHCH.toFixed(2);
-  document.getElementById("ptcMECA").innerHTML = "$" + ptcMECA.toFixed(2);
+  document.getElementById("ptcCACA").innerHTML = "$" + ptcCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ptcCHCA").innerHTML = "$" + ptcCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ptcCACH").innerHTML = "$" + ptcCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ptcCHCH").innerHTML = "$" + ptcCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("ptcMECA").innerHTML = "$" + ptcMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Total packaging costs and transportation costs (if necessary)
   const tpcCACA = eval(ptcCACA) + eval(ppuCACA);
@@ -461,11 +461,11 @@ Labor for packing */
   const tpcCHCH = eval(ptcCHCH) + eval(ppuCHCH);
   const tpcMECA = eval(ptcMECA) + eval(ppuMECA);
 
-  document.getElementById("tpcCACA").innerHTML = "$" + tpcCACA.toFixed(2);
-  document.getElementById("tpcCHCA").innerHTML = "$" + tpcCHCA.toFixed(2);
-  document.getElementById("tpcCACH").innerHTML = "$" + tpcCACH.toFixed(2);
-  document.getElementById("tpcCHCH").innerHTML = "$" + tpcCHCH.toFixed(2);
-  document.getElementById("tpcMECA").innerHTML = "$" + tpcMECA.toFixed(2);
+  document.getElementById("tpcCACA").innerHTML = "$" + tpcCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcCHCA").innerHTML = "$" + tpcCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcCACH").innerHTML = "$" + tpcCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcCHCH").innerHTML = "$" + tpcCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcMECA").innerHTML = "$" + tpcMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Total packaging costs per unit (if necessary)
   const tpcPUCACA = eval(ptcCACA / unitPerYear) + eval(ppuCACA);
@@ -474,11 +474,11 @@ Labor for packing */
   const tpcPUCHCH = eval(ptcCHCH / unitPerYear) + eval(ppuCHCH);
   const tpcPUMECA = eval(ptcMECA / unitPerYear) + eval(ppuMECA);
 
-  document.getElementById("tpcPUCACA").innerHTML = "$" + tpcPUCACA.toFixed(2);
-  document.getElementById("tpcPUCHCA").innerHTML = "$" + tpcPUCHCA.toFixed(2);
-  document.getElementById("tpcPUCACH").innerHTML = "$" + tpcPUCACH.toFixed(2);
-  document.getElementById("tpcPUCHCH").innerHTML = "$" + tpcPUCHCH.toFixed(2);
-  document.getElementById("tpcPUMECA").innerHTML = "$" + tpcPUMECA.toFixed(2);
+  document.getElementById("tpcPUCACA").innerHTML = "$" + tpcPUCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcPUCHCA").innerHTML = "$" + tpcPUCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcPUCACH").innerHTML = "$" + tpcPUCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcPUCHCH").innerHTML = "$" + tpcPUCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tpcPUMECA").innerHTML = "$" + tpcPUMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Maintenance Cost
   const mcCACA = 13100;
@@ -486,22 +486,22 @@ Labor for packing */
   const mcCACH = 15500;
   const mcCHCH = 4300;
   const mcMECA = 9700;
-  document.getElementById("mcCACA").innerHTML = "$" + mcCACA.toFixed(2);
-  document.getElementById("mcCHCA").innerHTML = "$" + mcCHCA.toFixed(2);
-  document.getElementById("mcCACH").innerHTML = "$" + mcCACH.toFixed(2);
-  document.getElementById("mcCHCH").innerHTML = "$" + mcCHCH.toFixed(2);
-  document.getElementById("mcMECA").innerHTML = "$" + mcMECA.toFixed(2);
+  document.getElementById("mcCACA").innerHTML = "$" + mcCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("mcCHCA").innerHTML = "$" + mcCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("mcCACH").innerHTML = "$" + mcCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("mcCHCH").innerHTML = "$" + mcCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("mcMECA").innerHTML = "$" + mcMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   document.getElementById("mcPUCACA").innerHTML =
-    "$" + (mcCACA / unitPerYear).toFixed(2);
+    "$" + (mcCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("mcPUCHCA").innerHTML =
-    "$" + (mcCHCA / unitPerYear).toFixed(2);
+    "$" + (mcCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("mcPUCACH").innerHTML =
-    "$" + (mcCACH / unitPerYear).toFixed(2);
+    "$" + (mcCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("mcPUCHCH").innerHTML =
-    "$" + (mcCHCH / unitPerYear).toFixed(2);
+    "$" + (mcCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("mcPUMECA").innerHTML =
-    "$" + (mcMECA / unitPerYear).toFixed(2);
+    "$" + (mcMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //design error risk
   const derCACA = 2800;
@@ -509,11 +509,11 @@ Labor for packing */
   const derCACH = 5000;
   const derCHCH = 1000;
   const derMECA = 2300;
-  document.getElementById("derCACA").innerHTML = "$" + derCACA.toFixed(2);
-  document.getElementById("derCHCA").innerHTML = "$" + derCHCA.toFixed(2);
-  document.getElementById("derCACH").innerHTML = "$" + derCACH.toFixed(2);
-  document.getElementById("derCHCH").innerHTML = "$" + derCHCH.toFixed(2);
-  document.getElementById("derMECA").innerHTML = "$" + derMECA.toFixed(2);
+  document.getElementById("derCACA").innerHTML = "$" + derCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("derCHCA").innerHTML = "$" + derCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("derCACH").innerHTML = "$" + derCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("derCHCH").innerHTML = "$" + derCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("derMECA").innerHTML = "$" + derMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //rework risk
   const rwrCACA = eval(productPrice) * 0.03;
@@ -521,11 +521,11 @@ Labor for packing */
   const rwrCACH = eval(productPrice) * 0.03;
   const rwrCHCH = eval(productPrice) * 0.06;
   const rwrMECA = eval(productPrice) * 0.07;
-  document.getElementById("rwrCACA").innerHTML = "$" + rwrCACA.toFixed(2);
-  document.getElementById("rwrCHCA").innerHTML = "$" + rwrCHCA.toFixed(2);
-  document.getElementById("rwrCACH").innerHTML = "$" + rwrCACH.toFixed(2);
-  document.getElementById("rwrCHCH").innerHTML = "$" + rwrCHCH.toFixed(2);
-  document.getElementById("rwrMECA").innerHTML = "$" + rwrMECA.toFixed(2);
+  document.getElementById("rwrCACA").innerHTML = "$" + rwrCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("rwrCHCA").innerHTML = "$" + rwrCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("rwrCACH").innerHTML = "$" + rwrCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("rwrCHCH").innerHTML = "$" + rwrCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("rwrMECA").innerHTML = "$" + rwrMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //ip risk
   const iprCACA = productPrice * 0.01;
@@ -533,11 +533,11 @@ Labor for packing */
   const iprCACH = productPrice * 0.01;
   const iprCHCH = productPrice * 0.15;
   const iprMECA = productPrice * 0.1;
-  document.getElementById("iprCACA").innerHTML = "$" + iprCACA.toFixed(2);
-  document.getElementById("iprCHCA").innerHTML = "$" + iprCHCA.toFixed(2);
-  document.getElementById("iprCACH").innerHTML = "$" + iprCACH.toFixed(2);
-  document.getElementById("iprCHCH").innerHTML = "$" + iprCHCH.toFixed(2);
-  document.getElementById("iprMECA").innerHTML = "$" + iprMECA.toFixed(2);
+  document.getElementById("iprCACA").innerHTML = "$" + iprCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("iprCHCA").innerHTML = "$" + iprCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("iprCACH").innerHTML = "$" + iprCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("iprCHCH").innerHTML = "$" + iprCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("iprMECA").innerHTML = "$" + iprMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //tracibilty risk
   const trCACA = productPrice * 0.01;
@@ -545,11 +545,11 @@ Labor for packing */
   const trCACH = productPrice * 0.01;
   const trCHCH = productPrice * 0.15;
   const trMECA = productPrice * 0.1;
-  document.getElementById("trCACA").innerHTML = "$" + trCACA.toFixed(2);
-  document.getElementById("trCHCA").innerHTML = "$" + trCHCA.toFixed(2);
-  document.getElementById("trCACH").innerHTML = "$" + trCACH.toFixed(2);
-  document.getElementById("trCHCH").innerHTML = "$" + trCHCH.toFixed(2);
-  document.getElementById("trMECA").innerHTML = "$" + trMECA.toFixed(2);
+  document.getElementById("trCACA").innerHTML = "$" + trCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trCHCA").innerHTML = "$" + trCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trCACH").innerHTML = "$" + trCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trCHCH").innerHTML = "$" + trCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trMECA").innerHTML = "$" + trMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //supplier risks
   const srCACA = productPrice * 0.1;
@@ -557,11 +557,11 @@ Labor for packing */
   const srCACH = productPrice * 0.1;
   const srCHCH = productPrice * 0.5;
   const srMECA = productPrice * 0.25;
-  document.getElementById("srCACA").innerHTML = "$" + srCACA.toFixed(2);
-  document.getElementById("srCHCA").innerHTML = "$" + srCHCA.toFixed(2);
-  document.getElementById("srCACH").innerHTML = "$" + srCACH.toFixed(2);
-  document.getElementById("srCHCH").innerHTML = "$" + srCHCH.toFixed(2);
-  document.getElementById("srMECA").innerHTML = "$" + srMECA.toFixed(2);
+  document.getElementById("srCACA").innerHTML = "$" + srCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("srCHCA").innerHTML = "$" + srCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("srCACH").innerHTML = "$" + srCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("srCHCH").innerHTML = "$" + srCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("srMECA").innerHTML = "$" + srMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //total risks
   const trsCACA =
@@ -574,22 +574,22 @@ Labor for packing */
     eval(srCHCH) + eval(trCHCH) + eval(iprCHCA) + eval(rwrCHCA) + eval(1000);
   const trsMECA =
     eval(srMECA) + eval(trMECA) + eval(iprMECA) + eval(rwrMECA) + eval(2300);
-  document.getElementById("trsCACA").innerHTML = "$" + trsCACA.toFixed(2);
-  document.getElementById("trsCHCA").innerHTML = "$" + trsCHCA.toFixed(2);
-  document.getElementById("trsCACH").innerHTML = "$" + trsCACH.toFixed(2);
-  document.getElementById("trsCHCH").innerHTML = "$" + trsCHCH.toFixed(2);
-  document.getElementById("trsMECA").innerHTML = "$" + trsMECA.toFixed(2);
+  document.getElementById("trsCACA").innerHTML = "$" + trsCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trsCHCA").innerHTML = "$" + trsCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trsCACH").innerHTML = "$" + trsCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trsCHCH").innerHTML = "$" + trsCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("trsMECA").innerHTML = "$" + trsMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   document.getElementById("trsPUCACA").innerHTML =
-    "$" + (trsCACA / unitPerYear).toFixed(2);
+    "$" + (trsCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("trsPUCHCA").innerHTML =
-    "$" + (trsCHCA / unitPerYear).toFixed(2);
+    "$" + (trsCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("trsPUCACH").innerHTML =
-    "$" + (trsCACH / unitPerYear).toFixed(2);
+    "$" + (trsCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("trsPUCHCH").innerHTML =
-    "$" + (trsCHCH / unitPerYear).toFixed(2);
+    "$" + (trsCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("trsPUMECA").innerHTML =
-    "$" + (trsMECA / unitPerYear).toFixed(2);
+    "$" + (trsMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //total costs
   const tocCACA =
@@ -627,11 +627,11 @@ Labor for packing */
     eval(qualityCostMECA) +
     eval(toolingCostMECA) +
     eval(tdcMECA);
-  document.getElementById("tocCACA").innerHTML = "$" + tocCACA.toFixed(2);
-  document.getElementById("tocCHCA").innerHTML = "$" + tocCHCA.toFixed(2);
-  document.getElementById("tocCACH").innerHTML = "$" + tocCACH.toFixed(2);
-  document.getElementById("tocCHCH").innerHTML = "$" + tocCHCH.toFixed(2);
-  document.getElementById("tocMECA").innerHTML = "$" + tocMECA.toFixed(2);
+  document.getElementById("tocCACA").innerHTML = "$" + tocCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tocCHCA").innerHTML = "$" + tocCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tocCACH").innerHTML = "$" + tocCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tocCHCH").innerHTML = "$" + tocCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("tocMECA").innerHTML = "$" + tocMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   const tocPUCACA = tocCACA / unitPerYear;
   const tocPUCHCA = tocCHCA / unitPerYear;
@@ -639,15 +639,15 @@ Labor for packing */
   const tocPUCHCH = tocCHCH / unitPerYear;
   const tocPUMECA = tocMECA / unitPerYear;
   document.getElementById("tocPUCACA").innerHTML =
-    "$" + (tocCACA / unitPerYear).toFixed(2);
+    "$" + (tocCACA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tocPUCHCA").innerHTML =
-    "$" + (tocCHCA / unitPerYear).toFixed(2);
+    "$" + (tocCHCA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tocPUCACH").innerHTML =
-    "$" + (tocCACH / unitPerYear).toFixed(2);
+    "$" + (tocCACH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tocPUCHCH").innerHTML =
-    "$" + (tocCHCH / unitPerYear).toFixed(2);
+    "$" + (tocCHCH / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("tocPUMECA").innerHTML =
-    "$" + (tocMECA / unitPerYear).toFixed(2);
+    "$" + (tocMECA / unitPerYear).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   //Products + shipping + other cost
   const psoCACA = eval(tocPUCACA) + eval(cumulativeProductCACA);
@@ -656,11 +656,11 @@ Labor for packing */
   const psoCHCH = eval(tocPUCHCH) + eval(cumulativeProductCHCH);
   const psoMECA = eval(tocPUMECA) + eval(cumulativeProductMECA);
 
-  document.getElementById("psoPUCACA").innerHTML = "$" + psoCACA.toFixed(2);
-  document.getElementById("psoPUCHCA").innerHTML = "$" + psoCHCA.toFixed(2);
-  document.getElementById("psoPUCACH").innerHTML = "$" + psoCACH.toFixed(2);
-  document.getElementById("psoPUCHCH").innerHTML = "$" + psoCHCH.toFixed(2);
-  document.getElementById("psoPUMECA").innerHTML = "$" + psoMECA.toFixed(2);
+  document.getElementById("psoPUCACA").innerHTML = "$" + psoCACA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("psoPUCHCA").innerHTML = "$" + psoCHCA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("psoPUCACH").innerHTML = "$" + psoCACH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("psoPUCHCH").innerHTML = "$" + psoCHCH.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("psoPUMECA").innerHTML = "$" + psoMECA.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   // alert("calculations function executed successfully")
 }

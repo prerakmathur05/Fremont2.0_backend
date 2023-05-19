@@ -82,3 +82,51 @@ CREATE TABLE IF NOT EXISTS `subscribers` (
   PRIMARY KEY (`id`),
 
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- CREATE TABLE IF NOT EXISTS `client_info` (
+--   `id` int(4) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) NOT NULL,
+--   `email` varchar(255) NOT NULL,
+--   `phone` varchar(255) NOT NULL,
+--   `client_type` varchar(255) NOT NULL,
+--   `date` datetime NOT NULL DEFAULT current_timestamp(),
+--   PRIMARY KEY (`id`)
+-- );
+
+-- CREATE TABLE IF NOT EXISTS `events` (
+--   `id` int(4) NOT NULL AUTO_INCREMENT,
+--   `title` varchar(255) NOT NULL,
+--   `event` varchar(255) NOT NULL,
+--   `date` datetime NOT NULL DEFAULT current_timestamp(),
+--   PRIMARY KEY (`id`)
+-- );
+-- CREATE TABLE IF NOT EXISTS `labboard` (
+--   `id` int(4) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(255) NOT NULL,
+--   `position` varchar(255) NOT NULL,
+--   `email` varchar(255) NOT NULL,
+--   PRIMARY KEY (`id`)
+-- );
+-- CREATE TABLE IF NOT EXISTS `map` (
+--   `id` int(4) NOT NULL AUTO_INCREMENT,
+--   `link` varchar(400) NOT NULL,
+--   PRIMARY KEY (`id`)
+-- -- );
+-- INSERT INTO labboard VALUES(1,'Gregory Theyel','Director, Proximity Lab','gregory.theyel@proximitylab.org');
+-- INSERT INTO labboard VALUES(2,'Andy Switky','CEO, Code Name Collective and Lecturer, Stanford University','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(3,'Donovan Lazaro','Economic Development Director, City of Fremont','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(4,'Florence Chen','Head of New Product Introduction, Enovix Corporation','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(5,'Matt Pawluk','Senior Director of Operations, Evolve Manufacturing','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(6,'Mike Zuerlein','Biomedical Production Engineer Enovix Corporation','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(7,'Nora Crivello','President and CEO, Westpak, Inc.','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(8,'Robin Davies','Senior Director Equipment Engineering, Seagate','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(9,'Bob Fung','CEO, Owens Design','email@proximitylab.org');
+-- INSERT INTO labboard VALUES(10,'Teresa Thuruthiyil','Head of Investor Relations, Joby Aviation','email@proximitylab.org');
+
+
+-- INSERT INTO events VALUES(1,'Next event','30 September 2022, Microclimates of Innovation in the SF Biomedical Industry. Gregory Theyel, Keynote Speaker for the Future of Diablo Valley Conference, 12:00 pm - 12:45 pm',curdate())
+
+--INSERT INTO news VALUES(1,'Assistance','Proximity Lab has helped its 50th company with engineering and business assistance.','prerakmathur.xyz',curdate());
+--INSERT INTO news VALUES(2,'Manufacturing Location Tool','Ten companies have completed a pilot study of the Proximity Lab Manufacturing Location Tool.','prerakmathur.xyz',curdate());
+--INSERT INTO news VALUES(3,'Awards','Proximity Lab has been awarded the "Comprehensive Business-Level Economic Analysis" study from East Bay EDA.','prerakmathur.xyz',curdate());

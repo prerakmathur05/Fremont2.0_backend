@@ -111,10 +111,10 @@ app.get('/', (request, response) =>  {
 			results[3].sort((a,b)=>{
 				if(a.name.split(" ")[1]<b.name.split(" ")[1]) return -1;
 			});
-			response.render('index.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], events: results[4], timeElapsedString: timeElapsedString });
+			response.render('index copy.html', {  news: results[0], reports: results[1], maps:results[2], labboard: results[3], events: results[4], timeElapsedString: timeElapsedString });
 		}
 		else{
-			response.render('index.html')
+			response.render('index copy.html')
 		}
 		
 	});
