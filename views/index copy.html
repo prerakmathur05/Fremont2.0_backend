@@ -572,7 +572,7 @@
         font-size: 4.8rem;">
                     <i class="fa-solid fa-lightbulb"></i>
                 </div>
-                <h2 style="margin-top: 0;">More than 50 companies have been <br>
+                <h2 style="margin-top: 0;">More than 100 companies have been <br>
                     assisted in only one year </h2>
             </div>
         </div>
@@ -705,7 +705,7 @@
 
             <div class="map">
                 <!-- <iframe class="map__element" src=http://www.greenvisions.net/maps/ca_biomedical_2020/map.php></iframe>-->
-                 <iframe  class="map__element" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3171.7200424621064!2d-121.94116052420456!3d37.34913607209576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcbd7eb157be7%3A0xf685aff58aff49b5!2sSobrato%20Campus%20for%20Discovery%20and%20Innovation!5e0!3m2!1sen!2sus!4v1683233100192!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                 <iframe  class="map__element" src="https://greenvisions.nfshost.com/maps/ca_biomedical_2023/map.php" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <!-- <div class="map"></div>
             {%if maps %}
@@ -3670,94 +3670,103 @@
     
 
 
-    <!--Contact Us page starts-->
-    <section id="contact" class="s-clients">
-        <div class="row section-header">
-            <div class="col-full contactUS_bottom">
-                <br/><br/>
-                <!-- <h3 class="subhead">What We Do</h3> -->
-                <h3 class="display-1 display-2--light blue">Contact Us
-                </h3>
-                <div class="row section-header has-bottom-sep">
-
+   <!--Contact Us page starts-->
+   <section id="contact" class="s-clients">
+    <div class="row section-header">
+        <div class="col-full contactUS_bottom">
+            <br/><br/>
+            <!-- <h3 class="subhead">What We Do</h3> -->
+            <h3 class="display-1 display-2--light blue">Contact Us
+            </h3>
+            <div class="row section-header">
+                <div class="section-header has-bottom-sep">
                     <h5 class="subtitle black">
                         <span>
                             This site shows <br/>
                             how we can help you grow, expand and scale.
                         </span>
                     </h5>
+                </div>
+                <h5>
+                    <span>
+                        WANT TO KNOW HOW WE CAN HELP YOU?
+                        <br />CONTACT US FOR ASSISTANCE.
+                    </span>
+                </h5>
                 
-                    <h5>
-                        <span>
-                            WANT TO KNOW HOW WE CAN HELP YOU?
-                            <br />CONTACT US FOR ASSISTANCE.
-                        </span>
-                    </h5>
-                    <br />
+                <!-- <div class="  contact-Us"> -->
                     <form action="/" method="POST" id="form__2">
-                        <div class="inputWrapper">
-                            <label for="name">NAME</label>
-                            <input name="name" type="string" id="name" required />
-                        </div>
-                        <div class="inputWrapper">
-                            <label for="Email">EMAIL</label>
-                            <input name="email" type="string" id="email" required />
-                        </div>
-                        <div class="inputWrapper">
-                            <label for="Phone">PHONE</label>
-                            <input name="phone" type="string" id="phone" pattern="\d*" maxlength="10" required />
-                        </div>
+                        <br>
 
-                        <br />
-                        <!-- <form action="POST" name="form__2"> -->
-
-                        
-                        <div class="business-btns btnsDirection contact-Us">
-                            <div class="btngrouping">
-                                <input class ="contact__radio__input" type="radio" id="startUpId" name="radio"  value = "1">
-                                <br class="hidebr"/><label for="startUp" class="businessType" >STARTUP</label>
+                        <div class="business-btns contact-Us">
+                            <div class="inputWrapper">
+                                <label for="name">NAME</label>
+                                <input name="name" type="string" id="name" required />
                             </div>
-                            <div class="btngrouping">
-                                <input class ="contact__radio__input" type="radio" id="midSizeId" name="radio" value = "2">
-                                <br class="hidebr"/><label for="midSizeBusiness" class="businessType" >MID-SIZE 
-                                    OR LARGE  <br/> COMPANY</label>
-                            </div>  
-                            <br/>
-                            <div class="btngrouping">
-                                <input class ="contact__radio__input" type="radio" id="conpanyId" name="radio" value = "3">
-                                <br class="hidebr"/><label for="government" class="businessType" >GOVERNMENT</label>
+                            <div class="inputWrapper">
+                                <label for="Email">EMAIL</label>
+                                <input name="email" type="string" id="email" required />
                             </div>
-                            
-                            <div class="btngrouping">
-                                <input class ="contact__radio__input" type="radio" id="startUpId2" name="radio" value = "4">
-                                <br class="hidebr"/><label for="university" class="businessType" >UNIVERSITY</label>
-                            </div>
-                            <div class="btngrouping">
-                                <input class ="contact__radio__input" type="radio" id="startUpId3" name="radio" value = "5">
-                                <br class="hidebr"/><label for="other" class="businessType" >OTHER</label>
+                            <div class="inputWrapper">
+                                <label for="Phone">PHONE</label>
+                                <input name="phone" type="string" id="phone" required />
                             </div>
                         </div>
-                        <input type="submit" name="submit" class="submit_btn" value="Submit" id="submit__form__2" onclick="executeAlertThree()">
+                       
+                    </br>
+                        <div class="form_div form_div_mobile">
+                    <div class="btngrouping">
+                        <input class ="contact__radio__input" type="radio" id="startUpId" name="radio"  value = "1">
+                        <br class="hidebr"/><label for="startUp" class="businessType" >STARTUP</label>
+                    </div>
+                    <div class="btngrouping">
+                        <input class ="contact__radio__input" type="radio" id="midSizeId" name="radio" value = "2">
+                        <br class="hidebr"/><label for="midSizeBusiness" class="businessType" >MID-SIZE 
+                            OR LARGE  <br/> COMPANY</label>
+                    </div>  
+                    <br/>
+                    <div class="btngrouping">
+                        <input class ="contact__radio__input" type="radio" id="conpanyId" name="radio" value = "3">
+                        <br class="hidebr"/><label for="government" class="businessType" >GOVERNMENT</label>
+                    </div>
+                    
+                    <div class="btngrouping">
+                        <input class ="contact__radio__input" type="radio" id="startUpId2" name="radio" value = "4">
+                        <br class="hidebr"/><label for="university" class="businessType" >UNIVERSITY</label>
+                    </div>
+                    <div class="btngrouping">
+                        <input class ="contact__radio__input" type="radio" id="startUpId3" name="radio" value = "5">
+                        <br class="hidebr"/><label for="other" class="businessType" >OTHER</label>
+                    </div>
+                    
+                </div>
+                <input type="submit" class="submit_btn" value="submit" id="submit__form__2" onclick="executeAlertThree()"></input>
+                
                     </form>
                 </div>
-                <script>
-                    var rad = document.form__2.radio;
-                    var prev = null;    
-                    for (var i = 0; i < rad.length; i++) {
-                        rad[i].addEventListener('change', function() {
-                            if (this !== prev) {
-                                prev = this;
-                            }
-                            console.log(this.value)
-                        });
-                    }
-                </script>
-                <br />
-                <!-- <input type="button" class="submit_btn" value="submit" id="submit__form__2" onclick="executeAlertThree()"></input> -->
+                
             </div>
+
+        
+            <script>
+                var rad = document.form__2.radio;
+                var prev = null;    
+                for (var i = 0; i < rad.length; i++) {
+                    rad[i].addEventListener('change', function() {
+                        if (this !== prev) {
+                            prev = this;
+                        }
+                        console.log(this.value)
+                    });
+                }
+            </script>
+            <br />
+            
         </div>
-    </section>
-    <!-- end s-services -->
+    </div>
+</section>
+<!-- end s-services -->
+
 
 
 

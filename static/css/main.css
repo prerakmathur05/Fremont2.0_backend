@@ -1569,9 +1569,6 @@ input::-moz-focus-inner {
 }
 
 @media only screen and (max-width: 800px) {
-  /*.s-clients {
-    /* padding-bottom: 17.4rem; 
-  }*/
   .section-header.has-bottom-sep::before {
     width: 400px;
   }
@@ -3281,7 +3278,7 @@ html.no-csstransitions .home-content__main {
 
 .form__child2 p {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 0px; 
   padding-left: 10px;
   font-family: montserrat-medium;
   align-items: center;
@@ -3296,7 +3293,7 @@ html.no-csstransitions .home-content__main {
   /* display: block; */
   justify-content: center;
   padding-left: 40px;
-  /* padding-top: 20px; */
+  padding-top: 20px;  
   /* padding-top: 10px; */
 }
 
@@ -4322,6 +4319,10 @@ footer .row {
   .footer-main .right {
     padding-left: 15px;
   }
+  .form_div_mobile{
+    grid-template-columns: 40% 33% 33% !important;
+    margin-left: 19% !important;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -4347,6 +4348,10 @@ footer .row {
     right: 0;
     bottom: 0;
   }
+  .form_div_mobile{
+    display: block !important;
+    margin-left: 10% !important;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -4362,6 +4367,10 @@ footer .row {
   }
   .footer-subscribe #mc-form label {
     text-align: center;
+  }
+  .form_div_mobile{
+    display: block !important;
+    margin-left: 10% !important;
   }
 }
 
@@ -4393,24 +4402,32 @@ footer .row {
 }
 
 .btngrouping {
-  display: inline-block;
+  /* display: inline-block; */
   margin-left: 18px;
 }
 .btngrouping > input[type="radio"] {
   height: 24px;
-  width: 98px;
+  width: 30px;
 }
 .business-btns {
   display: block;
 }
-.business-btns label {
+.btngrouping .businessType {
   font-size: 1.25rem;
-  display: flex;
+  display: block;
   width: 20px;
-  margin-left: 38px;
   margin-right:38px;
   white-space: nowrap;
 }
+.business-btns label {
+  font-size: 1.25rem;
+  /* display: flex;
+  width: 20px;
+  margin-left: 38px;
+  margin-right:38px; */
+  white-space: nowrap;
+}
+
 .btnsDirection {
   text-align: left;
   margin-left: 28%;
@@ -4421,15 +4438,28 @@ footer .row {
 .contactUS_bottom{
   padding-bottom: 13rem;
 }
+.form_div{
+  /* text-align: center; */
+  display: grid;
+  grid-template-columns: 28% 28% 28%;
+  /* justify-content: space-evenly; */
+  width: 50%;
+  margin-left: 32%;
+}
 /*********************************************************************
 * # Contact Us Section
 *
 * ------------------------------------------------------------------- */
-
-@media only screen and (max-width: 800px) {
-  .contact-Us {
-    margin-left: 24%;
+@media only screen and (max-width:1000px) and (min-width:800px)  {
+  .form_div{
+    grid-template-columns: 33% 33% 33%;
+    margin-left:20%
   }
+}
+@media only screen and (max-width: 800px) {
+  /* .contact-Us {
+    margin-left: 24%;
+  } */
   .cinfo a,.contact-secondary a, .contact-secondary h5{
     display: flex;
     justify-content: center;

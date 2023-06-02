@@ -5258,7 +5258,7 @@
 		this.aboutus_01.addEventListener("click", fl_ClickToGoToWebPage);
   
 		function fl_ClickToGoToWebPage() {
-		  window.open("https://proximity-fremont.netlify.app/#about", "_self");
+		  window.open("https://fih.nfshost.com/#about", "_self");
 		}
   
 		/* Click to Go to Web Page
@@ -5272,7 +5272,7 @@
 		this.locations_01.addEventListener("click", fl_ClickToGoToWebPage_4);
   
 		function fl_ClickToGoToWebPage_4() {
-		  window.open("https://proximity-fremont.netlify.app/#works", "_self");
+		  window.open("https://fih.nfshost.com/#works", "_self");
 		}
   
 		/* Click to Go to Web Page
@@ -5287,7 +5287,7 @@
   
 		function fl_ClickToGoToWebPage_5() {
 		  window.open(
-			"https://proximity-fremont.netlify.app/#services",
+			"https://fih.nfshost.com/#services",
 			"_self"
 		  );
 		}
@@ -5303,21 +5303,21 @@
 		this.manufacturing_01.addEventListener("click", fl_ClickToGoToWebPage_6);
   
 		function fl_ClickToGoToWebPage_6() {
-		  window.open("https://proximity-fremont.netlify.app/#clients", "_self");
+		  window.open("https://fih.nfshost.com/#clients", "_self");
 		}
-  
+   
 		/* Click to Go to Web Page
 		  Clicking on the specified symbol instance loads the URL in a new browser window.
 		  
 		  Instructions:
 		  1. Replace http://www.adobe.com with the desired URL address.
 			 Keep the quotation marks ("").
-		  */
+		  */ 
   
 		this.talent_01.addEventListener("click", fl_ClickToGoToWebPage_7);
   
 		function fl_ClickToGoToWebPage_7() {
-		  window.open("https://proximity-fremont.netlify.app/#news", "_self");
+		  window.open("https://fih.nfshost.com/#news", "_self");
 		}
 	  };
   
