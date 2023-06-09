@@ -49,7 +49,7 @@ function checkInputs() {
   // If x is Not a Number or less than one or greater than 10
 
   if (isNaN(unitPrice) || unitPrice < 1) {
-    document.getElementById("unitPriceFail").innerHTML = "Enter a valid number";
+    document.getElementById("unitPriceFail").innerHTML = "Please enter the price without symbols. No $ , - %";
     flag = 1;
   } else {
     document.getElementById("unitPriceFail").innerHTML = "";
@@ -57,28 +57,28 @@ function checkInputs() {
 
   if (isNaN(unitWeight) || unitWeight < 1) {
     document.getElementById("unitWeightFail").innerHTML =
-      "Enter a valid number";
+    "Please enter the weight without text or symbols. No £ , - #";
     flag = 1;
   } else {
     document.getElementById("unitWeightFail").innerHTML = "";
   }
   if (isNaN(materialCost) || materialCost < 1) {
     document.getElementById("materialCostFail").innerHTML =
-      "Enter a valid number";
+    "Please enter the material cost without symbols. No $ , - %";
     flag = 1;
   } else {
     document.getElementById("materialCostFail").innerHTML = "";
   }
   if (isNaN(unitPerYear) || unitPerYear < 1) {
     document.getElementById("unitsPerYearFail").innerHTML =
-      "Enter a valid number";
+    "Please enter the units without text or symbols. For decimals use the period.";
     flag = 1;
   } else {
     document.getElementById("unitsPerYearFail").innerHTML = "";
   }
   if (isNaN(directLabor) || directLabor < 1) {
     document.getElementById("directLaborFail").innerHTML =
-      "Enter a valid number";
+    "Please enter the hours without commas. For decimals use the period.";
     flag = 1;
   } else {
     document.getElementById("directLaborFail").innerHTML = "";

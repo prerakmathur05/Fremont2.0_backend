@@ -3280,9 +3280,10 @@ html.no-csstransitions .home-content__main {
 }
 
 .form__child2 p {
-  width: 100%;
-  padding-top: 20px;
-  padding-left: 10px;
+  width: 60%;
+  display: inline-flex;
+  /*padding-top: 20px;*/
+  /* padding-left: 10px; */
   font-family: montserrat-medium;
   align-items: center;
 }
